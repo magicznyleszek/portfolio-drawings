@@ -66,4 +66,6 @@ export default async function (eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy('images-original')
   eleventyConfig.addPassthroughCopy(DIR_SMALL)
   eleventyConfig.addPassthroughCopy(DIR_LARGE)
+
+  eleventyConfig.addPassthroughCopy('CNAME')
 }
