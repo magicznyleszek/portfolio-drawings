@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+permalink: "index.html"
+---
+
+Hi wrld!
+
+<h1>Gallery</h1>
+<ul>
+  {% for image in collections.images %}
+    <li>
+      <a href="/images/{{ image.parent }}/{{ image.slug }}.html">
+        <img src="/{{ image.small }}" alt="{{ image.metadata.title }}">
+      </a>
+    </li>
+  {% endfor %}
+</ul>

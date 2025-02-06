@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: collections.images
+  size: 1
+  alias: image
+permalink: "images/{{ image.parent }}/{{ image.slug }}.html"
+---
+<h1>{{ image.metadata.title }}</h1>
+<img src="/{{ image.large }}" alt="{{ image.metadata.title }}">
+<p>{{ image.metadata.description or '' }}</p>
+<a href="/{{ image.small }}">View Thumbnail</a>
+<a href="/{{ image.file }}">View Original</a>
