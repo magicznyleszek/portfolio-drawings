@@ -1,5 +1,5 @@
 import 'tsx/esm'
-import type { UserConfig } from '@11ty/eleventy'
+import type UserConfig from './UserConfig.d.ts'
 import { scanImages, type ScannedImage } from './scripts/fileScanner.ts'
 import { generateSmall, generateLarge } from './scripts/imageProcessor.ts'
 import { DIR_SMALL, DIR_LARGE } from './constants.ts'

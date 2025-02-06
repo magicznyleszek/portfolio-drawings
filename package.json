@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npx tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts --incremental",
     "start": "npx tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts --serve --incremental",
-    "postinstall": "node scripts/build-types.js"
+    "build-11ty-config-types": "node scripts/build-types.js"
   },
   "keywords": [],
   "author": "",
