@@ -1,7 +1,7 @@
-import globals from 'globals'
 import pluginJs from '@eslint/js'
-import tseslint from 'typescript-eslint'
 import stylistic from '@stylistic/eslint-plugin'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
 export default [
   {
@@ -28,6 +28,7 @@ export default [
     },
     rules: {
       '@stylistic/arrow-parens': ['error', 'always'],
+      '@stylistic/brace-style': ['error', '1tbs'],
     },
   },
 ]

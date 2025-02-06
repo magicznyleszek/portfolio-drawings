@@ -1,8 +1,8 @@
 import 'tsx/esm'
 import type UserConfig from './UserConfig.d.ts'
-import { scanImages, type ScannedImage } from './scripts/fileScanner.ts'
-import { generateSmall, generateLarge } from './scripts/imageProcessor.ts'
-import { DIR_SMALL, DIR_LARGE } from './constants.ts'
+import { DIR_LARGE, DIR_SMALL } from './constants.ts'
+import { type ScannedImage, scanImages } from './scripts/fileScanner.ts'
+import { generateLarge, generateSmall } from './scripts/imageProcessor.ts'
 
 interface ImageWithSizes extends ScannedImage {
   small: string
@@ -10,6 +10,8 @@ interface ImageWithSizes extends ScannedImage {
 }
 
 export default async function (eleventyConfig: UserConfig) {
+  eleventyConfig.setFrontMatterParsingOptions({ language: 'json' })
+
   // Ignore some files from output site
   eleventyConfig.ignores.add('README.md')
 

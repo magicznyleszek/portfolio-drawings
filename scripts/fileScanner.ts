@@ -1,6 +1,6 @@
-import fs from 'fs-extra'
-import fg from 'fast-glob'
 import slugify from '@sindresorhus/slugify'
+import fg from 'fast-glob'
+import fs from 'fs-extra'
 
 const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif']
 

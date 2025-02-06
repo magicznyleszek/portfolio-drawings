@@ -1,7 +1,7 @@
-import sharp from 'sharp'
-import path from 'path'
+import path from 'node:path'
 import fs from 'fs-extra'
-import { DIR_SMALL, DIR_LARGE } from '../constants.ts'
+import sharp from 'sharp'
+import { DIR_LARGE, DIR_SMALL } from '../constants.ts'
 
 export async function generateSmall(imagePath: string) {
   console.info('generateSmall STARTED', imagePath)

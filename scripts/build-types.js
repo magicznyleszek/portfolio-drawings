@@ -25,8 +25,7 @@ for (const pkg in Manifest.dependencies) {
               --moduleResolution nodenext
               --module nodenext
               --target esnext`
-    }
-    catch (e) {
+    } catch (e) {
       console.log(e.stdout)
     }
     console.log(`Wrote types for ${pkg}`)

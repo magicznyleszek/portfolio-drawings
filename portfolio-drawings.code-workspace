@@ -2,6 +2,53 @@
   "folders": [
     {
       "path": "."
-    }
-  ]
+    },
+  ],
+  "extensions": {
+    "recommendations": [
+      "editorconfig.editorconfig",
+      // Linters and Formatters
+      "dbaeumer.vscode-eslint",
+      "stylelint.vscode-stylelint",
+      "biomejs.biome",
+
+      // Status Bar Toggle for Format on Save
+      "tombonnike.vscode-status-bar-format-toggle",
+
+      // Syntax Support
+      "vunguyentuan.vscode-css-variables", // CSS
+      "vunguyentuan.vscode-postcss", // CSS
+    ]
+  },
+  "settings": {
+    // Stylelint
+    "stylelint.validate": ["css"],
+    "css.validate": false,
+
+    // Frontend formatting (Biome)
+    "[javascript]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.codeActionsOnSave": {
+        "quickfix.biome": "explicit",
+        "source.organizeImports.biome": "explicit"
+      }
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.codeActionsOnSave": {
+        "quickfix.biome": "explicit",
+        "source.organizeImports.biome": "explicit"
+      }
+    },
+    "[json]": {
+      "editor.defaultFormatter": "biomejs.biome",
+      "editor.codeActionsOnSave": {
+        "quickfix.biome": "explicit"
+      }
+    },
+
+    // Use locally-installed TypeScript instance (supports plugins in tsconfig)
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true
+  },
 }
