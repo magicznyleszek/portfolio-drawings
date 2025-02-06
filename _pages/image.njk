@@ -2,7 +2,7 @@
 {
 "layout": "layouts/base.njk",
 "pagination": { "data": "collections.images", "size": 1, "alias": "image" },
-"permalink": "images/{{ image.parent }}/{{ image.slug }}.html"
+"permalink": "/{{ image.categorySlug }}/{{ image.slug }}.html"
 }
 ---
 <h1>{{ image.metadata.title }}</h1>

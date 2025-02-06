@@ -10,6 +10,11 @@ export async function generateSmall(imagePath: string) {
   const outputPath = path.join(DIR_SMALL, fileName)
 
   await fs.ensureDir(DIR_SMALL)
+  // TODO make a better thumbnail, use some more sharp magick
+  // maybe have 3 sizes?:
+  // small: very tiny image 40px?, will be used in index page to just show what's inside a category
+  // medium: thumbnail with everything visible in it (300px?), used on category page
+  // large: on single image page
   await sharp(imagePath).resize(300).toFile(outputPath)
 
   console.info('generateSmall DONE', outputPath)

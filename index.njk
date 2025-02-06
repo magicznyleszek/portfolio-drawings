@@ -4,16 +4,16 @@
 "permalink": "index.html"
 }
 ---
+{%- from "system/component.njk" import component -%}
 
 Hi wrld!
 
 <h1>Gallery</h1>
-<ul>
-  {% for image in collections.images %}
-  <li>
-    <a href="/images/{{ image.parent }}/{{ image.slug }}.html">
-      <img src="/{{ image.small }}" alt="{{ image.metadata.title }}">
-    </a>
-  </li>
-  {% endfor %}
-</ul>
+
+{% for category in collections.imagesByCategory %}
+<h2><a href="/{{category.slug}}">{{ category.name }}</a></h2>
+
+{{ component('imagesList', {
+  images: category.images
+}) }}
+{% endfor %}

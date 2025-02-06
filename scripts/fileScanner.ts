@@ -12,7 +12,8 @@ interface ImageMetadata {
 export interface ScannedImage {
   file: string
   slug: string
-  parent: string
+  category: string
+  categorySlug: string
   metadata: ImageMetadata
 }
 
@@ -25,7 +26,7 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
   return imageFiles.map((file) => {
     const metadataPath = file.replace(/\.\w+$/, '.json')
 
-    const parentDir = file.split('/').at(-2) || ''
+    const categoryDir = file.split('/').at(-2) || ''
 
     const filename = file.split('/').pop()?.split('.').shift() || file
 
@@ -46,7 +47,8 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
     return {
       file,
       slug: slugify(filename),
-      parent: parentDir,
+      category: categoryDir,
+      categorySlug: slugify(categoryDir),
       metadata,
     }
   })
