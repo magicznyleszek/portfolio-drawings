@@ -1,0 +1,109 @@
+/*
+Root stuff and variables
+*/
+
+:root {
+  background-color: var(--bg-color);
+  transition: background 0.3s, color 0.3s;
+  color: var(--text-color);
+  font-family: sans-serif;
+  font-size: 20px;
+  line-height: 1.5rem;
+  font-family: sans-serif;
+  min-width: 100%;
+  min-height: 100%;
+  color-scheme: light dark;
+
+  /* Light Mode colors */
+  --bg-color: antiquewhite;
+  --text-color: darkslategray;
+  --accent-color: darkviolet;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Mode colors */
+    --bg-color: darkslategray;
+    --text-color: antiquewhite;
+    --accent-color: violet;
+  }
+}
+
+/*
+Resets and base groundwork
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:focus {
+  outline: 0;
+}
+
+:focus-visible {
+  outline: 0.25rem solid var(--accent-color);
+}
+
+a {
+  color: inherit;
+  text-decoration-style: dotted;
+  border-radius: 0.25rem;
+}
+
+a:hover {
+  text-decoration-style: solid;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 2px;
+}
+
+/*
+Main layout
+*/
+
+body {
+  padding: 1rem;
+  height: 100%;
+}
+
+/*
+AMCSS Components
+*/
+
+[am-imageList] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+[am-imageList~="small"] {
+  gap: 0.5rem;
+}
+[am-imageList~="medium"] {
+  gap: 1rem;
+}
+
+[am-imageList-item],
+[am-imageList-link],
+[am-imageList-image] {
+  display: block;
+}
+
+[am-category] {
+
+}
+
+[am-category-header] {
+
+}
+
+[am-category-header-link] {
+
+}

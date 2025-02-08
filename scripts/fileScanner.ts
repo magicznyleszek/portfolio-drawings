@@ -7,6 +7,8 @@ const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif']
 interface ImageMetadata {
   title?: string
   description?: string
+  /** Date string in ISO format */
+  date: string
 }
 
 export interface ScannedImage {
@@ -33,6 +35,7 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
     let metadata: ImageMetadata = {
       // We use filename by default, but it can get overriden by custom metadata
       title: filename,
+      date: fs.statSync(file).mtime.toISOString(),
     }
     if (fs.existsSync(metadataPath)) {
       const jsonMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf-8'))

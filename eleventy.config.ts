@@ -1,12 +1,13 @@
 import 'tsx/esm'
 import _ from 'lodash'
 import type UserConfig from './UserConfig.d.ts'
-import { DIR_LARGE, DIR_SMALL } from './constants.ts'
+import { IMAGE_SIZES } from './constants.ts'
 import { type ScannedImage, scanImages } from './scripts/fileScanner.ts'
-import { generateLarge, generateSmall } from './scripts/imageProcessor.ts'
+import { generateLarge, generateMedium, generateSmall } from './scripts/imageProcessor.ts'
 
 interface ImageWithSizes extends ScannedImage {
   small: string
+  medium: string
   large: string
 }
 
@@ -33,6 +34,7 @@ export default async function (eleventyConfig: UserConfig) {
       images.push({
         ...image,
         small: await generateSmall(image.file),
+        medium: await generateMedium(image.file),
         large: await generateLarge(image.file),
       })
     }),
@@ -64,8 +66,13 @@ export default async function (eleventyConfig: UserConfig) {
 
   // Include generated images files
   eleventyConfig.addPassthroughCopy('images-original')
-  eleventyConfig.addPassthroughCopy(DIR_SMALL)
-  eleventyConfig.addPassthroughCopy(DIR_LARGE)
+  eleventyConfig.addPassthroughCopy(IMAGE_SIZES.small.dir)
+  eleventyConfig.addPassthroughCopy(IMAGE_SIZES.medium.dir)
+  eleventyConfig.addPassthroughCopy(IMAGE_SIZES.large.dir)
 
+  // Makes the custom domain work on GH pages
   eleventyConfig.addPassthroughCopy('CNAME')
+
+  // Styles :shrug:
+  eleventyConfig.addPassthroughCopy('styles.css')
 }

@@ -1,13 +1,25 @@
 ---
 {
-"layout": "layouts/base.njk",
-"pagination": { "data": "collections.imagesByCategory", "size": 1, "alias": "category" },
-"permalink": "/{{ category.slug }}.html"
+  "layout": "layouts/base.njk",
+  "pagination": {
+    "data": "collections.imagesByCategory",
+    "size": 1,
+    "alias": "category"
+  },
+  "permalink": "/{{ category.slug }}.html"
 }
 ---
 {%- from "system/component.njk" import component -%}
-<h1>{{ category.name }}</h1>
 
-{{ component('imagesList', {
-  images: category.images
+<header>
+  <a href="/">home</a>
+
+  <h1>
+    {{ category.name }}
+  </h1>
+</header>
+
+{{ component('imageList', {
+  images: category.images,
+  size: 'medium'
 }) }}

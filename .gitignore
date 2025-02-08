@@ -1,5 +1,6 @@
 _site
 images-small
+images-medium
 images-large
 node_modules
 .DS_Store

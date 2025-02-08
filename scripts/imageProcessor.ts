@@ -1,37 +1,35 @@
 import path from 'node:path'
 import fs from 'fs-extra'
 import sharp from 'sharp'
-import { DIR_LARGE, DIR_SMALL } from '../constants.ts'
+import { IMAGE_SIZES, type ImageSizeDefinition } from '../constants.ts'
 
-export async function generateSmall(imagePath: string) {
-  console.info('generateSmall STARTED', imagePath)
+async function generateSize(imagePath: string, sizeDefnition: ImageSizeDefinition) {
+  console.info(`generateSize ${sizeDefnition.name} STARTED`, imagePath)
 
   const fileName = path.basename(imagePath)
-  const outputPath = path.join(DIR_SMALL, fileName)
+  const outputPath = path.join(sizeDefnition.dir, fileName)
 
-  await fs.ensureDir(DIR_SMALL)
+  await fs.ensureDir(sizeDefnition.dir)
   // TODO make a better thumbnail, use some more sharp magick
   // maybe have 3 sizes?:
   // small: very tiny image 40px?, will be used in index page to just show what's inside a category
   // medium: thumbnail with everything visible in it (300px?), used on category page
   // large: on single image page
-  await sharp(imagePath).resize(300).toFile(outputPath)
+  await sharp(imagePath).resize(sizeDefnition.width).toFile(outputPath)
 
-  console.info('generateSmall DONE', outputPath)
+  console.info(`generateSize ${sizeDefnition.name} DONE`, outputPath)
 
   return outputPath
 }
 
+export async function generateSmall(imagePath: string) {
+  return generateSize(imagePath, IMAGE_SIZES.small)
+}
+
+export async function generateMedium(imagePath: string) {
+  return generateSize(imagePath, IMAGE_SIZES.medium)
+}
+
 export async function generateLarge(imagePath: string) {
-  console.info('generateLarge STARTED', imagePath)
-
-  const fileName = path.basename(imagePath)
-  const outputPath = path.join(DIR_LARGE, fileName)
-
-  await fs.ensureDir(DIR_LARGE)
-  await sharp(imagePath).resize(1200).toFile(outputPath)
-
-  console.info('generateLarge DONE', outputPath)
-
-  return outputPath
+  return generateSize(imagePath, IMAGE_SIZES.large)
 }

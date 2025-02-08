@@ -1,19 +1,20 @@
 ---
 {
-"layout": "layouts/base.njk",
-"permalink": "index.html"
+  "layout": "layouts/base.njk",
+  "permalink": "index.html"
 }
 ---
 {%- from "system/component.njk" import component -%}
 
-Hi wrld!
-
-<h1>Gallery</h1>
-
 {% for category in collections.imagesByCategory %}
-<h2><a href="/{{category.slug}}">{{ category.name }}</a></h2>
+<section am-category>
+  <h2 am-category-header>
+    <a am-category-header-link href="/{{category.slug}}">{{ category.name }}</a>
+  </h2>
 
-{{ component('imagesList', {
-  images: category.images
-}) }}
-{% endfor %}
+  {{ component('imageList', {
+    images: category.images,
+    size: 'small'
+  }) }}
+  {% endfor %}
+</section>

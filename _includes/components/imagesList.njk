@@ -1,9 +1,0 @@
-<ul>
-  {% for image in params.images %}
-  <li>
-    <a href="/{{ image.categorySlug }}/{{ image.slug }}.html">
-      <img src="/{{ image.small }}" alt="{{ image.metadata.title }}">
-    </a>
-  </li>
-  {% endfor %}
-</ul>

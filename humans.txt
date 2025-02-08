@@ -1,0 +1,17 @@
+## TEAM
+
+Everything: Zefir Efemera
+Site: zefirefemera.xyz
+Email: zefirefemera@proton.me
+Location: Warsaw, Poland
+
+## THANKS
+
+All the people who created the deps I use <3.
+
+## SITE
+
+Last update: 2025/02
+Language: English
+Software: VSCode
+
