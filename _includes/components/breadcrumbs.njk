@@ -1,23 +1,16 @@
+{# Wanted to use proper nav.ol.li, but it's easier to have these wrap on smaller screens #}
 <nav am-breadcrumbs>
-  <ol am-breadcrumbs-list>
-    <li>
-      <a href="/">
-        ~
-      </a>
-    </li>
-    {% if params.category %}
-    <li>
-      <a href="/{{ params.category.slug }}">
-        {{ params.category.title }}
-      </a>
-    </li>
-    {% endif %}
-    {% if params.image %}
-    <li>
-      <a href="/{{ params.image.category.slug }}/{{ params.image.slug }}.html">
-        {{ params.image.title }}
-      </a>
-    </li>
-    {% endif %}
-  </ol>
+  <a {% if not params.category and not params.image %}am-breadcrumbs-active{%endif%} href="/">Zefir Efemera's Drawings</a>
+
+  {% if params.category %}
+  /
+  <a {% if params.category and not params.image %}am-breadcrumbs-active{%endif%}
+    href="/{{ params.category.slug }}">{{ params.category.title }}</a>
+  {% endif %}
+
+  {% if params.image %}
+  /
+  <a {% if params.category and params.image %}am-breadcrumbs-active{%endif%}
+    href="/{{ params.image.category.slug }}/{{ params.image.slug }}.html">{{ params.image.title }}</a>
+  {% endif %}
 </nav>

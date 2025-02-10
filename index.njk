@@ -6,6 +6,10 @@
 ---
 {%- from "system/component.njk" import component -%}
 
+<header>
+  {{ component('breadcrumbs') }}
+</header>
+
 {% for category in collections.imagesByCategory %}
 <section am-category>
   <h2 am-category-header>

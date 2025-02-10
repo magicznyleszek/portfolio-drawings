@@ -2,7 +2,7 @@
   {% for image in params.images %}
   <li am-imageList-item>
     <a am-imageList-link href="/{{ image.category.slug }}/{{ image.slug }}.html">
-      <img am-imageList-image src="/{{ image[params.size] }}" alt="{{ image.title }}">
+      <img am-imageList-image src="/{{ image[params.size] }}" alt="{{ image.slug }}" title="{{ image.title }}">
     </a>
   </li>
   {% endfor %}

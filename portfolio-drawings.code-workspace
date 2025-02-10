@@ -23,7 +23,7 @@
   "settings": {
     // Stylelint
     "stylelint.validate": ["css"],
-    "css.validate": true,
+    "css.validate": false,
 
     // Frontend formatting (Biome)
     "[javascript]": {

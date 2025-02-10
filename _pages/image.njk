@@ -11,21 +11,17 @@
 ---
 {%- from "system/component.njk" import component -%}
 
-<header>
-  {{ component('breadcrumbs', {
-    category: image.category,
-    image: image
-  }) }}
-
-  <h1>
-    {{ image.title }}
-  </h1>
-</header>
+{{ component('breadcrumbs', {
+  category: image.category,
+  image: image
+}) }}
 
 <article>
-  <img src="/{{ image.large }}" alt="{{ image.title }}">
   {% if image.description %}
-    <p>{{ image.description }}</p>
+  <p>{{ image.description }}</p>
   {% endif %}
-  <a href="/{{ image.file }}">View Original</a>
+
+  <a title="{{ image.title }}" href="/{{ image.file }}">
+    <img src="/{{ image.large }}" alt="{{ image.slug }}">
+  </a>
 </article>
