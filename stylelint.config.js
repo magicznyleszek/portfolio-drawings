@@ -2,6 +2,7 @@
 export default {
   extends: 'stylelint-config-standard',
   rules: {
-    'block-no-empty': false,
+    'no-duplicate-selectors': [true, { severity: 'warning' }],
+    'block-no-empty': [true, { severity: 'warning' }],
   },
 }

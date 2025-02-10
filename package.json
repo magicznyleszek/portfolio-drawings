@@ -14,7 +14,6 @@
   "type": "module",
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
-    "@biomejs/biome": "^1.9.4",
     "@eslint/js": "^9.19.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@stylistic/eslint-plugin": "^3.0.1",

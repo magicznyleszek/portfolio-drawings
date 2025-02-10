@@ -1,38 +1,11 @@
 /*
-Variables (palette)
-*/
-
-:root {
-  --c-vulcan: hsl(230, 30%, 10%);
-  --c-link-water: hsl(230, 40%, 90%);
-  --c-clairvoyant: hsl(290, 87%, 18%);
-  --c-light-wisteria: hsl(281, 46%, 75%);
-
-  /* Variables (on smaller devices) */
-  /* TODO: see if this is sensible, of if rather we should do regular @media for resizing specific selectors */
-  --space-sm: calc(0.5rem * 0.75);
-  --space-md: calc(1rem * 0.75);
-  --space-lg: calc(2rem * 0.75);
-}
-
-@media (min-width: 1000px) {
-  :root {
-    /* Variables (on bigger devices) */
-    --space-sm: 0.5rem;
-    --space-md: 1rem;
-    --space-lg: 2rem;
-  }
-}
-
-/*
 Root stuff and some variables
 */
 
 :root {
-  background-color: var(--bg-color);
+  background-color: var(--theme-bg);
   transition: background 0.3s, color 0.3s;
-  color: var(--text-color);
-  font-family: sans-serif;
+  color: var(--theme-text);
   font-size: 20px;
   line-height: 1.5rem;
   font-family: sans-serif;
@@ -40,18 +13,39 @@ Root stuff and some variables
   min-height: 100%;
   color-scheme: light dark;
 
-  /* Light Mode colors */
-  --bg-color: var(--c-link-water);
-  --text-color: var(--c-vulcan);
-  --accent-color: var(--c-clairvoyant);
+  /* Variables - colors palette */
+  --c-vulcan: hsl(230deg 30% 10%);
+  --c-link-water: hsl(230deg 40% 90%);
+  --c-clairvoyant: hsl(290deg 87% 18%);
+  --c-light-wisteria: hsl(281deg 46% 75%);
+
+  /* Variables - sizes (on smaller devices) */
+  --size-sm: calc(0.5rem * 0.75);
+  --size-md: calc(1rem * 0.75);
+  --size-lg: calc(2rem * 0.75);
+
+  /* Variables - Light Mode theme colors */
+  --theme-bg: var(--c-link-water);
+  --theme-text: var(--c-vulcan);
+  --theme-accent: var(--c-clairvoyant);
+}
+
+/* TODO: see if this is sensible, of if rather we should do regular @media for resizing specific selectors */
+@media (width >= 1000px) {
+  :root {
+    /* Variables - sizes (on bigger devices) */
+    --size-sm: 0.5rem;
+    --size-md: 1rem;
+    --size-lg: 2rem;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Dark Mode colors */
-    --bg-color: var(--c-vulcan);
-    --text-color: var(--c-link-water);
-    --accent-color: var(--c-light-wisteria);
+    /* Variables - Dark Mode theme colors */
+    --theme-bg: var(--c-vulcan);
+    --theme-text: var(--c-link-water);
+    --theme-accent: var(--c-light-wisteria);
   }
 }
 
@@ -69,7 +63,7 @@ Resets and base groundwork
 }
 
 :focus-visible {
-  outline: 0.25rem solid var(--accent-color);
+  outline: 0.25rem solid var(--theme-accent);
 }
 
 a {
@@ -86,11 +80,11 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 2px;
-  box-shadow: 2px 4px 6px hsla(230, 20, 5, 0.5);
+  box-shadow: 2px 4px 6px hsl(230deg 20% 5% / 50%);
 }
 
 p:not(:last-child) {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--size-md);
 }
 
 /*
@@ -98,12 +92,12 @@ Main layout
 */
 
 body {
-  padding: var(--space-lg);
+  padding: var(--size-lg);
   height: 100%;
 }
 
 [am-mainHeader] {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--size-lg);
   text-align: center;
 }
 
@@ -112,8 +106,8 @@ body {
 }
 
 [am-mainFooter] {
-  color: var(--accent-color);
-  margin-top: var(--space-lg);
+  color: var(--theme-accent);
+  margin-top: var(--size-lg);
   font-size: 0.8rem;
 }
 
@@ -123,15 +117,15 @@ AMCSS Components
 
 a[am-logo] {
   display: inline-block;
-  color: var(--accent-color);
+  color: var(--theme-accent);
 }
 
 a[am-logo]:hover {
-  color: var(--text-color);
+  color: var(--theme-text);
 }
 
 a[am-logo] svg {
-  fill: currentColor;
+  fill: currentcolor;
   width: 3rem;
   display: block;
 }
@@ -141,14 +135,15 @@ a[am-logo] svg {
   padding: 0;
   margin: 0;
   display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 }
+
 [am-imageList~="small"] {
-  gap: var(--space-sm);
+  gap: var(--size-sm);
 }
+
 [am-imageList~="medium"] {
-  gap: var(--space-md);
+  gap: var(--size-md);
 }
 
 [am-imageList-item],
@@ -162,16 +157,11 @@ a[am-logo] svg {
 }
 
 [am-category]:not(:last-of-type) {
-  margin-bottom: var(--space-lg);
-}
-
-/* TODO: invalid selector, should be picked up by stylelint? */
-[am-category]:not(:last-of-type):asdasda {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--size-lg);
 }
 
 [am-category-header] {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--size-md);
 }
 
 [am-category-header-link] {
@@ -179,10 +169,10 @@ a[am-logo] svg {
 }
 
 [am-breadcrumbs] {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--size-lg);
 }
 
 [am-breadcrumbs-active] {
   font-weight: 700;
-  color: var(--accent-color);
+  color: var(--theme-accent);
 }
