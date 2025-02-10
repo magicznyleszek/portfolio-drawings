@@ -80,7 +80,7 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 2px;
-  box-shadow: 2px 4px 6px hsl(230deg 20% 5% / 50%);
+  box-shadow: 1px 1px 1px hsl(230deg 20% 5% / 40%);
 }
 
 p:not(:last-child) {
