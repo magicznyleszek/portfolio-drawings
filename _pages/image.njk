@@ -9,11 +9,13 @@
   "permalink": "/{{ image.category.slug }}/{{ image.slug }}.html"
 }
 ---
+{%- from "system/component.njk" import component -%}
 
 <header>
-  <a href="/">home</a>
-  /
-  <a href="/{{ image.category.slug }}">{{ image.category.title }}</a>
+  {{ component('breadcrumbs', {
+    category: image.category,
+    image: image
+  }) }}
 
   <h1>
     {{ image.title }}

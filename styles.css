@@ -1,5 +1,31 @@
 /*
-Root stuff and variables
+Variables (palette)
+*/
+
+:root {
+  --c-vulcan: hsl(230, 30%, 10%);
+  --c-link-water: hsl(230, 40%, 90%);
+  --c-clairvoyant: hsl(290, 87%, 18%);
+  --c-light-wisteria: hsl(281, 46%, 75%);
+
+  /* Variables (on smaller devices) */
+  /* TODO: see if this is sensible, of if rather we should do regular @media for resizing specific selectors */
+  --space-sm: calc(0.5rem * 0.75);
+  --space-md: calc(1rem * 0.75);
+  --space-lg: calc(2rem * 0.75);
+}
+
+@media (min-width: 1000px) {
+  :root {
+    /* Variables (on bigger devices) */
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+  }
+}
+
+/*
+Root stuff and some variables
 */
 
 :root {
@@ -15,17 +41,17 @@ Root stuff and variables
   color-scheme: light dark;
 
   /* Light Mode colors */
-  --bg-color: antiquewhite;
-  --text-color: darkslategray;
-  --accent-color: darkviolet;
+  --bg-color: var(--c-link-water);
+  --text-color: var(--c-vulcan);
+  --accent-color: var(--c-clairvoyant);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     /* Dark Mode colors */
-    --bg-color: darkslategray;
-    --text-color: antiquewhite;
-    --accent-color: violet;
+    --bg-color: var(--c-vulcan);
+    --text-color: var(--c-link-water);
+    --accent-color: var(--c-light-wisteria);
   }
 }
 
@@ -67,8 +93,20 @@ Main layout
 */
 
 body {
-  padding: 1rem;
+  padding: var(--space-lg);
   height: 100%;
+}
+
+[am-mainHeader] {
+  margin-bottom: var(--space-lg);
+}
+
+[am-main] {
+  margin: 0 auto;
+}
+
+[am-mainFooter] {
+  margin-top: var(--space-lg);
 }
 
 /*
@@ -84,10 +122,10 @@ AMCSS Components
   flex-wrap: wrap;
 }
 [am-imageList~="small"] {
-  gap: 0.5rem;
+  gap: var(--space-sm);
 }
 [am-imageList~="medium"] {
-  gap: 1rem;
+  gap: var(--space-md);
 }
 
 [am-imageList-item],
@@ -100,10 +138,40 @@ AMCSS Components
 
 }
 
-[am-category-header] {
+[am-category]:not(:last-of-type) {
+  margin-bottom: var(--space-md);
+}
 
+/* TODO: invalid selector, should be picked up by stylelint? */
+[am-category]:not(:last-of-type):asdasda {
+  margin-bottom: var(--space-md);
+}
+
+[am-category-header] {
+  margin-bottom: var(--space-md);
 }
 
 [am-category-header-link] {
 
+}
+
+[am-breadcrumbs] {
+  margin-bottom: var(--space-md);
+}
+
+[am-breadcrumbs-list] {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+[am-breadcrumbs-list] > li:not(:last-of-type)::after {
+  content: ' / ';
+}
+
+[am-breadcrumbs-list] > li {
+  display: flex;
+  flex-direction: row;
 }

@@ -6,13 +6,15 @@
     "size": 1,
     "alias": "category"
   },
-  "permalink": "/{{ category.slug }}.html"
+  "permalink": "/{{ category.slug }}/index.html"
 }
 ---
 {%- from "system/component.njk" import component -%}
 
 <header>
-  <a href="/">home</a>
+  {{ component('breadcrumbs', {
+    category: category
+  }) }}
 
   <h1>
     {{ category.title }}

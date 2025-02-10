@@ -25,9 +25,15 @@
   </head>
 
   <body>
-    {{ content | safe }}
+    <header am-mainHeader>
+      <h1>Zefir Efemera's Drawings</h1>
+    </header>
 
-    <footer>
+    <main am-main>
+      {{ content | safe }}
+    </main>
+
+    <footer am-mainFooter>
       <p>
         &copy;&infin;+1
         <a href="https://zefirefemera.xyz" target="_blank">Zefir Efemera</a>

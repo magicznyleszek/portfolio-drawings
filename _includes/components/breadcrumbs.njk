@@ -1,0 +1,23 @@
+<nav am-breadcrumbs>
+  <ol am-breadcrumbs-list>
+    <li>
+      <a href="/">
+        ~
+      </a>
+    </li>
+    {% if params.category %}
+    <li>
+      <a href="/{{ params.category.slug }}">
+        {{ params.category.title }}
+      </a>
+    </li>
+    {% endif %}
+    {% if params.image %}
+    <li>
+      <a href="/{{ params.image.category.slug }}/{{ params.image.slug }}.html">
+        {{ params.image.title }}
+      </a>
+    </li>
+    {% endif %}
+  </ol>
+</nav>
