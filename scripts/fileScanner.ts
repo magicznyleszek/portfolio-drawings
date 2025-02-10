@@ -4,19 +4,21 @@ import fs from 'fs-extra'
 
 const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif']
 
-interface ImageMetadata {
-  title?: string
+export interface ScannedImageCategory {
+  name: string
+  slug: string
+  title: string
   description?: string
-  /** Date string in ISO format */
-  date: string
 }
 
 export interface ScannedImage {
   file: string
   slug: string
-  category: string
-  categorySlug: string
-  metadata: ImageMetadata
+  title: string
+  description?: string
+  /** Date string in ISO format */
+  dateModified: string
+  category: ScannedImageCategory
 }
 
 export async function scanImages(directory: string): Promise<ScannedImage[]> {
@@ -26,33 +28,60 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
 
   console.info(`scanImages DONE (total images: ${imageFiles.length + 1})`)
   return imageFiles.map((file) => {
-    const metadataPath = file.replace(/\.\w+$/, '.json')
-
     const categoryDir = file.split('/').at(-2) || ''
+    // We use directory name by default, but it can get overriden by custom metadata
+    let categoryTitle = categoryDir
+    let categoryDescription: string | undefined
 
-    const filename = file.split('/').pop()?.split('.').shift() || file
-
-    let metadata: ImageMetadata = {
-      // We use filename by default, but it can get overriden by custom metadata
-      title: filename,
-      date: fs.statSync(file).mtime.toISOString(),
+    // Read optional metadata for category
+    const categoryMetadataPath = `${directory}/${categoryDir}/_metadata.json`
+    if (fs.existsSync(categoryMetadataPath)) {
+      const categoryJsonMetadata = JSON.parse(fs.readFileSync(categoryMetadataPath, 'utf-8'))
+      if (categoryJsonMetadata) {
+        console.info('scanImages category metadata JSON found', categoryMetadataPath)
+      }
+      if (categoryJsonMetadata.title) {
+        categoryTitle = categoryJsonMetadata.title
+      }
+      if (categoryJsonMetadata.description) {
+        categoryDescription = categoryJsonMetadata.description
+      }
     }
-    if (fs.existsSync(metadataPath)) {
-      const jsonMetadata = JSON.parse(fs.readFileSync(metadataPath, 'utf-8'))
-      if (jsonMetadata) {
-        metadata = {
-          ...metadata,
-          ...jsonMetadata,
-        }
+
+    const imageFilename = file.split('/').pop()?.split('.').shift() || file
+    const imageMetadataPath = file.replace(/\.\w+$/, '.json')
+
+    // We use filename by default, but it can get overriden by custom metadata
+    let imageTitle = imageFilename
+    let imageDescription: string | undefined
+
+    // Read optional metadata for the image
+    if (fs.existsSync(imageMetadataPath)) {
+      const imageJsonMetadata = JSON.parse(fs.readFileSync(imageMetadataPath, 'utf-8'))
+      if (imageJsonMetadata) {
+        console.info('scanImages image metadata JSON found', imageMetadataPath)
+      }
+      if (imageJsonMetadata.title) {
+        imageTitle = imageJsonMetadata.title
+      }
+      if (imageJsonMetadata.description) {
+        imageDescription = imageJsonMetadata.description
       }
     }
 
     return {
       file,
-      slug: slugify(filename),
-      category: categoryDir,
-      categorySlug: slugify(categoryDir),
-      metadata,
+      slug: slugify(imageFilename),
+      title: imageTitle,
+      description: imageDescription,
+      // Useful for sitemap
+      dateModified: fs.statSync(file).mtime.toISOString(),
+      category: {
+        name: categoryDir,
+        slug: slugify(categoryDir),
+        title: categoryTitle,
+        description: categoryDescription,
+      },
     }
   })
 }

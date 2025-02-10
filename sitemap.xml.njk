@@ -9,8 +9,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {% for image in collections.images %}
   <url>
-    <loc>{{ site.url }}/{{ image.categorySlug }}/{{ image.slug }}.html</loc>
-    <lastmod>{{ image.metadata.date }}</lastmod>
+    <loc>{{ site.url }}/{{ image.category.slug }}/{{ image.slug }}.html</loc>
+    <lastmod>{{ image.dateModified }}</lastmod>
   </url>
   {% endfor %}
 </urlset>

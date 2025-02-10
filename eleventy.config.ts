@@ -2,7 +2,7 @@ import 'tsx/esm'
 import _ from 'lodash'
 import type UserConfig from './UserConfig.d.ts'
 import { IMAGE_SIZES } from './constants.ts'
-import { type ScannedImage, scanImages } from './scripts/fileScanner.ts'
+import { type ScannedImage, type ScannedImageCategory, scanImages } from './scripts/fileScanner.ts'
 import { generateLarge, generateMedium, generateSmall } from './scripts/imageProcessor.ts'
 
 interface ImageWithSizes extends ScannedImage {
@@ -11,9 +11,7 @@ interface ImageWithSizes extends ScannedImage {
   large: string
 }
 
-interface Category {
-  name: string
-  slug: string
+interface Category extends ScannedImageCategory {
   images: ImageWithSizes[]
 }
 
@@ -42,14 +40,14 @@ export default async function (eleventyConfig: UserConfig) {
   console.info('scan and generate images DONE')
 
   // We sort images by their category directory descending, and then by name ascending
-  images = images.sort((a, b) => b.category.localeCompare(a.category) || a.file.localeCompare(b.file))
+  images = images.sort((a, b) => b.category.name.localeCompare(a.category.name) || a.file.localeCompare(b.file))
 
   eleventyConfig.addCollection('images', async () => images)
 
   eleventyConfig.addCollection('imagesByCategory', async () => {
     const categories: Category[] = []
     const grouped = _.chain(images)
-      .groupBy((image) => image.category)
+      .groupBy((image) => image.category.name)
       .toPairs()
       .value()
       .sort()
@@ -57,7 +55,9 @@ export default async function (eleventyConfig: UserConfig) {
     for (const categoryArray of grouped) {
       categories.push({
         name: categoryArray[0],
-        slug: categoryArray[1][0]?.categorySlug || '',
+        slug: categoryArray[1][0]?.category.slug || '',
+        title: categoryArray[1][0]?.category.title || '',
+        description: categoryArray[1][0]?.category.description,
         images: categoryArray[1],
       })
     }

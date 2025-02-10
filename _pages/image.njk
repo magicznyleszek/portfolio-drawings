@@ -6,22 +6,24 @@
     "size": 1,
     "alias": "image"
   },
-  "permalink": "/{{ image.categorySlug }}/{{ image.slug }}.html"
+  "permalink": "/{{ image.category.slug }}/{{ image.slug }}.html"
 }
 ---
 
 <header>
   <a href="/">home</a>
   /
-  <a href="/{{ image.categorySlug }}">{{ image.category }}</a>
+  <a href="/{{ image.category.slug }}">{{ image.category.title }}</a>
 
   <h1>
-    {{ image.metadata.title }}
+    {{ image.title }}
   </h1>
 </header>
 
 <article>
-  <img src="/{{ image.large }}" alt="{{ image.metadata.title }}">
-  <p>{{ image.metadata.description or '' }}</p>
+  <img src="/{{ image.large }}" alt="{{ image.title }}">
+  {% if image.description %}
+    <p>{{ image.description }}</p>
+  {% endif %}
   <a href="/{{ image.file }}">View Original</a>
 </article>

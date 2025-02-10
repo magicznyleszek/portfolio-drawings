@@ -15,9 +15,13 @@
   <a href="/">home</a>
 
   <h1>
-    {{ category.name }}
+    {{ category.title }}
   </h1>
 </header>
+
+{% if category.description %}
+<p>{{ category.description }}</p>
+{% endif %}
 
 {{ component('imageList', {
   images: category.images,

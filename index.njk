@@ -9,7 +9,7 @@
 {% for category in collections.imagesByCategory %}
 <section am-category>
   <h2 am-category-header>
-    <a am-category-header-link href="/{{category.slug}}">{{ category.name }}</a>
+    <a am-category-header-link href="/{{category.slug}}">{{ category.title }}</a>
   </h2>
 
   {{ component('imageList', {
