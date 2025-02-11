@@ -27,8 +27,10 @@ export default [
       '@stylistic': stylistic,
     },
     rules: {
-      '@stylistic/arrow-parens': ['error', 'always'],
-      '@stylistic/brace-style': ['error', '1tbs'],
+      '@stylistic/arrow-parens': ['warn', 'always'],
+      '@stylistic/brace-style': ['warn', '1tbs'],
+      '@stylistic/quotes': ['warn', 'single', { avoidEscape: true }],
+      '@stylistic/semi': ['warn', 'never', { beforeStatementContinuationChars: 'always' }],
     },
   },
 ]

@@ -7,6 +7,7 @@ const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif']
 export interface ScannedImageCategory {
   name: string
   slug: string
+  url: string
   title: string
   description?: string
 }
@@ -14,6 +15,7 @@ export interface ScannedImageCategory {
 export interface ScannedImage {
   file: string
   slug: string
+  url: string
   title: string
   description?: string
   /** Date string in ISO format */
@@ -28,6 +30,9 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
 
   console.info(`scanImages DONE (total images: ${imageFiles.length + 1})`)
   return imageFiles.map((file) => {
+    // Step 1 - build category info
+    // ============================
+
     const categoryDir = file.split('/').at(-2) || ''
     // We use directory name by default, but it can get overriden by custom metadata
     let categoryTitle = categoryDir
@@ -47,6 +52,12 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
         categoryDescription = categoryJsonMetadata.description
       }
     }
+
+    const categorySlug = slugify(categoryDir);
+    const categoryUrl = `/${categorySlug}/index.html`
+
+    // Step 2 - build image info
+    // ============================
 
     const imageFilename = file.split('/').pop()?.split('.').shift() || file
     const imageMetadataPath = file.replace(/\.\w+$/, '.json')
@@ -69,16 +80,21 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
       }
     }
 
+    const imageSlug = slugify(imageFilename);
+    const imageUrl = `/${categorySlug}/${imageSlug}/index.html`;
+
     return {
       file,
-      slug: slugify(imageFilename),
+      slug: imageSlug,
+      url: imageUrl,
       title: imageTitle,
       description: imageDescription,
       // Useful for sitemap
       dateModified: fs.statSync(file).mtime.toISOString(),
       category: {
         name: categoryDir,
-        slug: slugify(categoryDir),
+        slug: categorySlug,
+        url: categoryUrl,
         title: categoryTitle,
         description: categoryDescription,
       },

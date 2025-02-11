@@ -4,6 +4,7 @@ import type UserConfig from './UserConfig.d.ts'
 import { IMAGE_SIZES } from './constants.ts'
 import { type ScannedImage, type ScannedImageCategory, scanImages } from './scripts/fileScanner.ts'
 import { generateLarge, generateMedium, generateSmall } from './scripts/imageProcessor.ts'
+import pluginRss from '@11ty/eleventy-plugin-rss';
 
 interface ImageWithSizes extends ScannedImage {
   small: string
@@ -56,6 +57,7 @@ export default async function (eleventyConfig: UserConfig) {
       categories.push({
         name: categoryArray[0],
         slug: categoryArray[1][0]?.category.slug || '',
+        url: categoryArray[1][0]?.category.url || '',
         title: categoryArray[1][0]?.category.title || '',
         description: categoryArray[1][0]?.category.description,
         images: categoryArray[1],
@@ -75,4 +77,7 @@ export default async function (eleventyConfig: UserConfig) {
 
   // Styles :shrug:
   eleventyConfig.addPassthroughCopy('styles.css')
+
+  // RSS feed
+  eleventyConfig.addPlugin(pluginRss)
 }

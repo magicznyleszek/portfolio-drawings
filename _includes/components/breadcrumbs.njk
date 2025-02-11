@@ -11,6 +11,6 @@
   {% if params.image %}
   /
   <a {% if params.category and params.image %}am-breadcrumbs-active{%endif%}
-    href="/{{ params.image.category.slug }}/{{ params.image.slug }}.html">{{ params.image.title }}</a>
+    href="/{{ params.image.category.slug }}/{{ params.image.slug }}">{{ params.image.title }}</a>
   {% endif %}
 </nav>
