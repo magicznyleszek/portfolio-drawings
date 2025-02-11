@@ -6,8 +6,8 @@ Root stuff and some variables
   background-color: var(--theme-bg);
   transition: background 0.3s, color 0.3s;
   color: var(--theme-text);
-  font-size: 20px;
-  line-height: 1.5rem;
+  font-size: 18px;
+  line-height: 2rem;
   font-family: sans-serif;
   min-width: 100%;
   min-height: 100%;
