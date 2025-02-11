@@ -16,18 +16,23 @@ Root stuff and some variables
   /* Variables - colors palette */
   --c-vulcan: hsl(230deg 30% 10%);
   --c-link-water: hsl(230deg 40% 90%);
-  --c-clairvoyant: hsl(290deg 87% 18%);
-  --c-light-wisteria: hsl(281deg 46% 75%);
+  --c-purpureus: hsl(280deg 40% 50%);
+  --c-light-wisteria: hsl(280deg 45% 75%);
 
   /* Variables - sizes (on smaller devices) */
   --size-sm: calc(0.5rem * 0.75);
   --size-md: calc(1rem * 0.75);
   --size-lg: calc(2rem * 0.75);
+  --size-xl: calc(3rem * 0.75);
 
   /* Variables - Light Mode theme colors */
   --theme-bg: var(--c-link-water);
   --theme-text: var(--c-vulcan);
-  --theme-accent: var(--c-clairvoyant);
+  --theme-accent: var(--c-purpureus);
+  --theme-shadow: hsl(from var(--c-vulcan) h calc(s * 2) calc(l * 0.5) / 40%);
+
+  /* Variables - misc */
+  --max-content-width: 54rem;
 }
 
 /* TODO: see if this is sensible, of if rather we should do regular @media for resizing specific selectors */
@@ -37,6 +42,7 @@ Root stuff and some variables
     --size-sm: 0.5rem;
     --size-md: 1rem;
     --size-lg: 2rem;
+    --size-xl: 3rem;
   }
 }
 
@@ -80,11 +86,27 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: 2px;
-  box-shadow: 1px 1px 1px hsl(230deg 20% 5% / 40%);
+  box-shadow: 1px 1px 1px var(--theme-shadow);
 }
 
 p:not(:last-child) {
   margin-bottom: var(--size-md);
+}
+
+h1, h2, h3 {
+  line-height: inherit;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
 }
 
 /*
@@ -97,18 +119,26 @@ body {
 }
 
 [am-mainHeader] {
-  margin-bottom: var(--size-lg);
+  margin-bottom: var(--size-xl);
   text-align: center;
 }
 
 [am-main] {
-  margin: 0 auto;
+  margin-top: var(--size-xl);
+  margin-bottom: var(--size-xl);
 }
 
 [am-mainFooter] {
   color: var(--theme-accent);
-  margin-top: var(--size-lg);
+  margin-top: var(--size-xl);
   font-size: 0.8rem;
+}
+
+[am-mainCentered] {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--max-content-width);
+  width: 100%;
 }
 
 /*
