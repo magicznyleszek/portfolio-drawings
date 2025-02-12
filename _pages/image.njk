@@ -21,7 +21,7 @@
   <p>{{ image.description }}</p>
   {% endif %}
 
-  <a title="{{ image.title }}" href="/{{ image.file }}">
-    <img src="/{{ image.large }}" alt="{{ image.slug }}">
+  <a am-imageLink title="{{ image.title }}" href="/{{ image.file }}">
+    <img am-imageLink-image src="/{{ image.large }}" alt="{{ image.slug }}">
   </a>
 </article>

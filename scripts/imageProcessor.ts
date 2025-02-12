@@ -15,7 +15,26 @@ async function generateSize(imagePath: string, sizeDefnition: ImageSizeDefinitio
   // small: very tiny image 40px?, will be used in index page to just show what's inside a category
   // medium: thumbnail with everything visible in it (300px?), used on category page
   // large: on single image page
-  await sharp(imagePath).resize(sizeDefnition.width).toFile(outputPath)
+  await sharp(imagePath)
+    .withExifMerge({
+      IFD0: {
+        Copyright: 'Zefir Efemera',
+      },
+    })
+    .resize({
+      fit: sharp.fit.inside,
+      width: sizeDefnition.width,
+      height: sizeDefnition.width,
+    })
+    // .sharpen()
+    .jpeg({
+      quality: 80,
+      // Progressive is better than baseline
+      progressive: true,
+      // Better compression, but slower
+      mozjpeg: true,
+    })
+    .toFile(outputPath)
 
   console.info(`generateSize ${sizeDefnition.name} DONE`, outputPath)
 

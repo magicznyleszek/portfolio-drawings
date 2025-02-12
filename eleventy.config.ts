@@ -4,7 +4,7 @@ import type UserConfig from './UserConfig.d.ts'
 import { IMAGE_SIZES } from './constants.ts'
 import { type ScannedImage, type ScannedImageCategory, scanImages } from './scripts/fileScanner.ts'
 import { generateLarge, generateMedium, generateSmall } from './scripts/imageProcessor.ts'
-import pluginRss from '@11ty/eleventy-plugin-rss';
+import pluginRss from '@11ty/eleventy-plugin-rss'
 
 interface ImageWithSizes extends ScannedImage {
   small: string
@@ -77,6 +77,7 @@ export default async function (eleventyConfig: UserConfig) {
 
   // Styles :shrug:
   eleventyConfig.addPassthroughCopy('styles.css')
+  eleventyConfig.addPassthroughCopy('fonts')
 
   // RSS feed
   eleventyConfig.addPlugin(pluginRss)
