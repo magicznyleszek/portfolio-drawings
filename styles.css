@@ -131,7 +131,6 @@ body {
 
 [am-mainHeader] {
   margin-bottom: var(--size-xl);
-  text-align: center;
 }
 
 [am-main] {
