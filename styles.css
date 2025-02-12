@@ -6,9 +6,9 @@ Root stuff and some variables
   background-color: var(--theme-bg);
   transition: background 0.3s, color 0.3s;
   color: var(--theme-text);
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.5rem;
-  font-family: sans-serif;
+  font-family: "IM Fell English", "Sono", "Hepta Slab", serif;
   min-width: 100%;
   min-height: 100%;
   color-scheme: light dark;
@@ -32,7 +32,7 @@ Root stuff and some variables
   --theme-shadow: hsl(from var(--c-vulcan) h calc(s * 2) calc(l * 0.5) / 40%);
 
   /* Variables - misc */
-  --max-content-width: 54rem;
+  --max-content-width: 44rem;
 }
 
 /* TODO: see if this is sensible, of if rather we should do regular @media for resizing specific selectors */
@@ -95,11 +95,13 @@ p:not(:last-child) {
 
 h1 {
   font-size: 2rem;
+  font-weight: 400;
   line-height: calc(2rem * 1.25);
 }
 
 h2 {
   font-size: 1.5rem;
+  font-weight: 400;
   line-height: calc(1.5rem * 1.25);
 }
 
@@ -197,6 +199,6 @@ a[am-logo] svg {
 }
 
 [am-breadcrumbs-active] {
-  font-weight: 700;
+  font-style: italic;
   color: var(--theme-accent);
 }
