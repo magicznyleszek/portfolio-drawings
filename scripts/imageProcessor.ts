@@ -3,25 +3,6 @@ import fs from 'fs-extra'
 import sharp from 'sharp'
 import { IMAGE_SIZES, type ImageSizeDefinition } from '../constants.ts'
 
-// Sometimes we want to have no sharpening, so to make things easier (?) we have this zero sharpening options:
-const SHARPEN_OPTIONS_NONE: sharp.SharpenOptions = {
-  sigma: 1,
-  m1: 0,
-  m2: 0,
-  x1: 0,
-  y2: 0,
-  y3: 0,
-}
-const SHARPEN_OPTIONS: sharp.SharpenOptions = {
-  sigma: 4,
-  m1: 0.5,
-  m2: 3,
-  x1: 200,
-  y2: 1,
-  y3: 2,
-}
-const SHARPEN_LIMIT = 500
-
 async function generateSize(imagePath: string, sizeDefnition: ImageSizeDefinition) {
   console.info(`generateSize ${sizeDefnition.name} STARTED`, imagePath)
 
@@ -41,14 +22,8 @@ async function generateSize(imagePath: string, sizeDefnition: ImageSizeDefinitio
       height: sizeDefnition.width,
       kernel: 'lanczos3',
     })
-    .sharpen(sizeDefnition.width > SHARPEN_LIMIT ? SHARPEN_OPTIONS_NONE : SHARPEN_OPTIONS)
-    .jpeg({
-      quality: 80,
-      // Progressive is better than baseline
-      progressive: true,
-      // Better compression, but slower
-      mozjpeg: true,
-    })
+    .sharpen(sizeDefnition.sharpenOptions)
+    .toFormat(sizeDefnition.format, sizeDefnition.formatOptions)
     .toFile(outputPath)
 
   console.info(`generateSize ${sizeDefnition.name} DONE`, outputPath)
