@@ -91,8 +91,16 @@ a {
   border-radius: 2px;
 }
 
+p a {
+  text-decoration: underline wavy 1px;
+}
+
 a:hover {
   text-decoration: underline wavy 1px;
+}
+
+p a:hover {
+  color: var(--theme-accent);
 }
 
 img {
@@ -152,6 +160,12 @@ body {
 /*
 AMCSS Components
 */
+
+/* intro */
+
+[am-intro] {
+  margin-bottom: var(--size-lg);
+}
 
 /* logo */
 
