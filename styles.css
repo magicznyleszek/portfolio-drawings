@@ -36,7 +36,6 @@ Root stuff and some variables
   --size-sm: calc(0.5rem * 0.75);
   --size-md: calc(1rem * 0.75);
   --size-lg: calc(2rem * 0.75);
-  --size-xl: calc(3rem * 0.75);
 
   /* Variables - Light Mode theme colors */
   --theme-bg: var(--c-link-water);
@@ -55,7 +54,6 @@ Root stuff and some variables
     --size-sm: 0.5rem;
     --size-md: 1rem;
     --size-lg: 2rem;
-    --size-xl: 3rem;
   }
 }
 
@@ -111,13 +109,13 @@ p:not(:last-child) {
 h1 {
   font-size: 2rem;
   font-weight: 400;
-  line-height: calc(2rem * 1.25);
+  line-height: calc(2rem * 1.1);
 }
 
 h2 {
   font-size: 1.5rem;
   font-weight: 400;
-  line-height: calc(1.5rem * 1.25);
+  line-height: calc(1.5rem * 1.1);
 }
 
 /*
@@ -130,17 +128,17 @@ body {
 }
 
 [am-mainHeader] {
-  margin-bottom: var(--size-xl);
+  margin-bottom: var(--size-lg);
 }
 
 [am-main] {
-  margin-top: var(--size-xl);
-  margin-bottom: var(--size-xl);
+  margin-top: var(--size-lg);
+  margin-bottom: var(--size-lg);
 }
 
 [am-mainFooter] {
   color: var(--theme-accent);
-  margin-top: var(--size-xl);
+  margin-top: var(--size-lg);
   font-size: 0.8rem;
 }
 
@@ -155,6 +153,8 @@ body {
 AMCSS Components
 */
 
+/* logo */
+
 a[am-logo] {
   display: inline-block;
   color: var(--theme-accent);
@@ -166,15 +166,27 @@ a[am-logo]:hover {
 
 a[am-logo] svg {
   fill: currentcolor;
-  width: 3rem;
+  height: 4rem;
   display: block;
 }
+
+/* imageLink */
+
+[am-imageLink] {
+  display: inline-block;
+}
+
+[am-imageLink-image] {
+  display: block;
+}
+
+/* imageList */
 
 [am-imageList] {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: inline-flex;
+  display: flex;
   flex-flow: row wrap;
 }
 
@@ -186,14 +198,6 @@ a[am-logo] svg {
   gap: var(--size-md);
 }
 
-[am-imageLink] {
-  display: inline-block;
-}
-
-[am-imageLink-image] {
-  display: block;
-}
-
 [am-imageList-item],
 [am-imageList-link],
 [am-imageList-image] {
@@ -201,17 +205,21 @@ a[am-logo] svg {
 }
 
 [am-imageList-link]:hover {
-  outline: 2px solid currentcolor;
+  outline: 2px solid var(--theme-accent);
   overflow: hidden;
 }
+
+/* category */
 
 [am-category]:not(:last-of-type) {
   margin-bottom: var(--size-lg);
 }
 
 [am-category-header] {
-  margin-bottom: var(--size-md);
+  margin-bottom: var(--size-sm);
 }
+
+/* breadcrumbs */
 
 [am-breadcrumbs] {
   margin-bottom: var(--size-lg);
@@ -221,6 +229,8 @@ a[am-logo] svg {
   font-style: italic;
   color: var(--theme-accent);
 }
+
+/* secretLink */
 
 [am-secretLink] {
   transition: opacity 0.25s;
