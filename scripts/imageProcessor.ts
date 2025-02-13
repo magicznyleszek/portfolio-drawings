@@ -1,16 +1,23 @@
 import path from 'node:path'
-import fs from 'fs-extra'
+import * as fsPromises from 'fs/promises'
 import sharp from 'sharp'
 import { IMAGE_SIZES, type ImageSizeDefinition } from '../constants.ts'
 
-async function generateSize(imagePath: string, sizeDefnition: ImageSizeDefinition) {
-  console.info(`generateSize ${sizeDefnition.name} STARTED`, imagePath)
+async function generateSize(sourceImagePath: string, sizeDef: ImageSizeDefinition) {
+  console.info(`generateSize ${sizeDef.name} STARTED`, sourceImagePath)
 
-  const fileName = path.basename(imagePath)
-  const outputPath = path.join(sizeDefnition.dir, fileName)
+  // Get file name from path and then replace the extension with desired format
+  const pathWithNewExtension = `${sourceImagePath.split('.').slice(0, -1).join('.')}.${sizeDef.format}`
+  const outputPath = pathWithNewExtension.replace('images-original', sizeDef.dir)
+  const outputDir = path.dirname(outputPath)
 
-  await fs.ensureDir(sizeDefnition.dir)
-  await sharp(imagePath)
+  await fsPromises.mkdir(outputDir, { recursive: true }).catch((err) => {
+    console.error(err)
+  })
+
+  await sharp(sourceImagePath)
+    // Auto orient to not lose that EXIF Orientation information
+    .rotate()
     .withExifMerge({
       IFD0: {
         Copyright: 'Zefir Efemera',
@@ -18,27 +25,27 @@ async function generateSize(imagePath: string, sizeDefnition: ImageSizeDefinitio
     })
     .resize({
       fit: sharp.fit.inside,
-      width: sizeDefnition.width,
-      height: sizeDefnition.width,
+      width: sizeDef.width,
+      height: sizeDef.width,
       kernel: 'lanczos3',
     })
-    .sharpen(sizeDefnition.sharpenOptions)
-    .toFormat(sizeDefnition.format, sizeDefnition.formatOptions)
+    .sharpen(sizeDef.sharpenOptions)
+    .toFormat(sizeDef.format, sizeDef.formatOptions)
     .toFile(outputPath)
 
-  console.info(`generateSize ${sizeDefnition.name} DONE`, outputPath)
+  console.info(`generateSize ${sizeDef.name} DONE`, outputPath)
 
   return outputPath
 }
 
-export async function generateSmall(imagePath: string) {
-  return generateSize(imagePath, IMAGE_SIZES.small)
+export async function generateSmall(sourceImagePath: string) {
+  return generateSize(sourceImagePath, IMAGE_SIZES.small)
 }
 
-export async function generateMedium(imagePath: string) {
-  return generateSize(imagePath, IMAGE_SIZES.medium)
+export async function generateMedium(sourceImagePath: string) {
+  return generateSize(sourceImagePath, IMAGE_SIZES.medium)
 }
 
-export async function generateLarge(imagePath: string) {
-  return generateSize(imagePath, IMAGE_SIZES.large)
+export async function generateLarge(sourceImagePath: string) {
+  return generateSize(sourceImagePath, IMAGE_SIZES.large)
 }

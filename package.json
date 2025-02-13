@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts --incremental",
+    "build": "npx tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts",
     "start": "npx tsx ./node_modules/.bin/eleventy --config=eleventy.config.ts --serve --incremental",
     "build-11ty-config-types": "node scripts/buildTypes.js"
   },

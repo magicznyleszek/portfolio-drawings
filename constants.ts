@@ -1,4 +1,4 @@
-import type { SharpenOptions, FormatEnum, OutputOptions, JpegOptions } from 'sharp'
+import type { SharpenOptions, FormatEnum, OutputOptions, JpegOptions, GifOptions } from 'sharp'
 
 // Sometimes we want to have no sharpening, so to make things easier (?) we have this zero sharpening options:
 const SHARPEN_OPTIONS_NONE: SharpenOptions = { sigma: 1, m1: 0, m2: 0, x1: 0, y2: 0, y3: 0 }
@@ -10,6 +10,14 @@ const FORMAT_OPTIONS_JPEG: JpegOptions = {
   progressive: true,
   // Better compression, but slower
   mozjpeg: true,
+}
+
+const FORMAT_OPTIONS_GIF: GifOptions = {
+  reuse: true,
+  progressive: true,
+  colors: 10,
+  effort: 2,
+  dither: 1,
 }
 
 enum ImageSizeName {
@@ -33,16 +41,16 @@ export const IMAGE_SIZES: Record<ImageSizeName, ImageSizeDefinition> = {
     dir: 'images-small',
     width: 60,
     sharpenOptions: SHARPEN_OPTIONS_SOME,
-    format: 'jpeg',
-    formatOptions: FORMAT_OPTIONS_JPEG,
+    format: 'gif',
+    formatOptions: FORMAT_OPTIONS_GIF,
   },
   medium: {
     name: ImageSizeName.medium,
     dir: 'images-medium',
     width: 320,
     sharpenOptions: SHARPEN_OPTIONS_SOME,
-    format: 'jpeg',
-    formatOptions: FORMAT_OPTIONS_JPEG,
+    format: 'gif',
+    formatOptions: FORMAT_OPTIONS_GIF,
   },
   large: {
     name: ImageSizeName.large,
