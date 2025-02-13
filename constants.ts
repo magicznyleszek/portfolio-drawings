@@ -14,12 +14,12 @@ export const IMAGE_SIZES: Record<ImageSizeName, ImageSizeDefinition> = {
   small: {
     name: ImageSizeName.small,
     dir: 'images-small',
-    width: 50,
+    width: 60,
   },
   medium: {
     name: ImageSizeName.medium,
     dir: 'images-medium',
-    width: 300,
+    width: 320,
   },
   large: {
     name: ImageSizeName.large,
