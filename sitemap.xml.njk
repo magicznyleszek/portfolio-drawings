@@ -9,7 +9,6 @@
   {% for image in collections.images %}
   <url>
     <loc>{{ site.url }}/{{ image.category.slug }}/{{ image.slug }}.html</loc>
-    <lastmod>{{ image.dateModified }}</lastmod>
   </url>
   {% endfor %}
 </urlset>

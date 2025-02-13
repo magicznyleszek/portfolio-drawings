@@ -18,8 +18,6 @@ export interface ScannedImage {
   url: string
   title: string
   description?: string
-  /** Date string in ISO format */
-  dateModified: string
   category: ScannedImageCategory
 }
 
@@ -89,8 +87,6 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
       url: imageUrl,
       title: imageTitle,
       description: imageDescription,
-      // Useful for sitemap
-      dateModified: fs.statSync(file).mtime.toISOString(),
       category: {
         name: categoryDir,
         slug: categorySlug,
