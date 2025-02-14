@@ -26,6 +26,14 @@ Root stuff and some variables
   min-height: 100%;
   color-scheme: light dark;
 
+  /* test */
+  background-image:
+    linear-gradient( -20deg, var(--theme-text-05), transparent),
+    linear-gradient( -50deg, var(--theme-accent-05), transparent),
+    linear-gradient( -70deg, var(--theme-text-05), transparent),
+    linear-gradient( -90deg, var(--theme-accent-05), transparent);
+  box-shadow: 2rem -1rem 10rem 0 var(--theme-accent-05) inset;
+
   /* Variables - colors palette */
   --c-vulcan: hsl(230deg 30% 10%);
   --c-link-water: hsl(230deg 40% 90%);
@@ -41,6 +49,10 @@ Root stuff and some variables
   --theme-bg: var(--c-link-water);
   --theme-text: var(--c-vulcan);
   --theme-accent: var(--c-purpureus);
+
+  /* Variables - agnostic theme colors */
+  --theme-accent-05: hsl(from var(--theme-accent) h s l / 5%);
+  --theme-text-05: hsl(from var(--theme-accent) h s l / 5%);
   --theme-shadow: hsl(from var(--c-vulcan) h calc(s * 2) calc(l * 0.5) / 40%);
 
   /* Variables - misc */
