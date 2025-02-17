@@ -66,6 +66,31 @@
   <a am-imageLink title="rodzaje-pokeballi-1-36" href="/images-original/2023-12-rodzaje-pokeballi/rodzaje-pokeballi-1-36.jpeg">
     <img am-imageLink-image src="/images-large/2023-12-rodzaje-pokeballi/rodzaje-pokeballi-1-36.jpeg" alt="rodzaje-pokeballi-1-36">
   </a>
+
+  <script>
+  const shareImageAsset = async (url, title) => {
+    const response = await fetch(url.toString());
+    const blob = await response.blob();
+
+    const filesArray = [
+      new File([blob], url, {
+        type: 'image/jpeg',
+        lastModified: new Date().getTime(),
+      }),
+    ];
+    const shareData = {
+      title: title,
+      files: filesArray,
+    };
+
+    if (navigator.canShare && navigator.canShare(shareData)) {
+      await navigator.share(shareData);
+    }
+  };
+</script>
+
+<button onclick="shareImageAsset('/2023-12-rodzaje-pokeballi/rodzaje-pokeballi-1-36/', 'rodzaje-pokeballi-1-36')">share</button>
+
 </article>
 
     </main>

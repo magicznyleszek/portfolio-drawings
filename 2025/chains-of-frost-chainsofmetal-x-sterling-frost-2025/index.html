@@ -66,6 +66,31 @@
   <a am-imageLink title="Chains of Frost - Chainsofmetal x Sterling Frost (2025)" href="/images-original/2025/Chains of Frost - Chainsofmetal x Sterling Frost (2025).jpeg">
     <img am-imageLink-image src="/images-large/2025/Chains of Frost - Chainsofmetal x Sterling Frost (2025).jpeg" alt="chains-of-frost-chainsofmetal-x-sterling-frost-2025">
   </a>
+
+  <script>
+  const shareImageAsset = async (url, title) => {
+    const response = await fetch(url.toString());
+    const blob = await response.blob();
+
+    const filesArray = [
+      new File([blob], url, {
+        type: 'image/jpeg',
+        lastModified: new Date().getTime(),
+      }),
+    ];
+    const shareData = {
+      title: title,
+      files: filesArray,
+    };
+
+    if (navigator.canShare && navigator.canShare(shareData)) {
+      await navigator.share(shareData);
+    }
+  };
+</script>
+
+<button onclick="shareImageAsset('/2025/chains-of-frost-chainsofmetal-x-sterling-frost-2025/', 'Chains of Frost - Chainsofmetal x Sterling Frost (2025)')">share</button>
+
 </article>
 
     </main>

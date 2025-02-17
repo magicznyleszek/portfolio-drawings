@@ -66,6 +66,31 @@
   <a am-imageLink title="Jayfred134 nude DrawMeNSFW (2025) print copy colored" href="/images-original/2025/Jayfred134 nude DrawMeNSFW (2025) print copy colored.jpeg">
     <img am-imageLink-image src="/images-large/2025/Jayfred134 nude DrawMeNSFW (2025) print copy colored.jpeg" alt="jayfred134-nude-draw-me-nsfw-2025-print-copy-colored">
   </a>
+
+  <script>
+  const shareImageAsset = async (url, title) => {
+    const response = await fetch(url.toString());
+    const blob = await response.blob();
+
+    const filesArray = [
+      new File([blob], url, {
+        type: 'image/jpeg',
+        lastModified: new Date().getTime(),
+      }),
+    ];
+    const shareData = {
+      title: title,
+      files: filesArray,
+    };
+
+    if (navigator.canShare && navigator.canShare(shareData)) {
+      await navigator.share(shareData);
+    }
+  };
+</script>
+
+<button onclick="shareImageAsset('/2025/jayfred134-nude-draw-me-nsfw-2025-print-copy-colored/', 'Jayfred134 nude DrawMeNSFW (2025) print copy colored')">share</button>
+
 </article>
 
     </main>
