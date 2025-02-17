@@ -24,4 +24,9 @@
   <a am-imageLink title="{{ image.title }}" href="/{{ image.file }}">
     <img am-imageLink-image src="/{{ image.large }}" alt="{{ image.slug }}">
   </a>
+
+  {{ component('shareButton', {
+    url: image.url,
+    title: image.title
+  }) }}
 </article>

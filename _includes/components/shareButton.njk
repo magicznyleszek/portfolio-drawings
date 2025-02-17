@@ -1,0 +1,23 @@
+<script>
+  const shareImageAsset = async (url, title) => {
+    const response = await fetch(url.toString());
+    const blob = await response.blob();
+
+    const filesArray = [
+      new File([blob], url, {
+        type: 'image/jpeg',
+        lastModified: new Date().getTime(),
+      }),
+    ];
+    const shareData = {
+      title: title,
+      files: filesArray,
+    };
+
+    if (navigator.canShare && navigator.canShare(shareData)) {
+      await navigator.share(shareData);
+    }
+  };
+</script>
+
+<button onclick="shareImageAsset('{{ params.url }}', '{{ params.title }}')">share</button>
