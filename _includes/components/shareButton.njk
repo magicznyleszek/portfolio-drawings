@@ -23,4 +23,8 @@
   };
 </script>
 
-<button onclick="shareImageAsset('{{ params.imageUrl }}', '{{ params.pageUrl }}', '{{ params.title }}')">share</button>
+<button
+  title="Share"
+  am-shareButton
+  onclick="shareImageAsset('{{ params.imageUrl }}', '{{ params.pageUrl }}', '{{ params.title }}')"
+>&heartsuit;</button>

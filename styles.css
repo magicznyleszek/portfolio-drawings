@@ -193,6 +193,7 @@ AMCSS Components
 a[am-logo] {
   display: inline-block;
   color: var(--theme-accent-primary);
+  vertical-align: top;
 }
 
 a[am-logo]:hover {
@@ -209,6 +210,7 @@ a[am-logo] svg {
 
 [am-imageLink] {
   display: inline-block;
+  vertical-align: top;
 }
 
 [am-imageLink-image] {
@@ -275,4 +277,22 @@ a[am-logo] svg {
 
 [am-secretLink]:hover {
   opacity: 1;
+}
+
+/* shareButton */
+
+[am-shareButton] {
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--theme-accent-primary);
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+[am-shareButton]:hover {
+  color: var(--theme-text);
 }
