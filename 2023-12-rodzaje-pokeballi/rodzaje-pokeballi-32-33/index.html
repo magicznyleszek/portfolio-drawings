@@ -68,20 +68,23 @@
   </a>
 
   <script>
-  const shareImageAsset = async (url, title) => {
-    const response = await fetch(url.toString());
+  const shareImageAsset = async (imageUrl, pageUrl, title) => {
+    const response = await fetch(imageUrl.toString());
     const blob = await response.blob();
 
     const filesArray = [
-      new File([blob], url, {
+      new File([blob], imageUrl, {
         type: 'image/jpeg',
         lastModified: new Date().getTime(),
       }),
     ];
     const shareData = {
       title: title,
+      url: pageUrl,
       files: filesArray,
     };
+
+    console.info('shareImageAsset final data:', shareData);
 
     if (navigator.canShare && navigator.canShare(shareData)) {
       await navigator.share(shareData);
@@ -89,7 +92,7 @@
   };
 </script>
 
-<button onclick="shareImageAsset('/2023-12-rodzaje-pokeballi/rodzaje-pokeballi-32-33/', 'rodzaje-pokeballi-32-33')">share</button>
+<button onclick="shareImageAsset('/images-large/2023-12-rodzaje-pokeballi/rodzaje-pokeballi-32-33.jpeg', 'https://drawings.zefirefemera.xyz/2023-12-rodzaje-pokeballi/rodzaje-pokeballi-32-33/', 'rodzaje-pokeballi-32-33')">share</button>
 
 </article>
 
