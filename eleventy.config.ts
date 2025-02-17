@@ -1,7 +1,7 @@
 import 'tsx/esm'
 import _ from 'lodash'
 import type UserConfig from './UserConfig.d.ts'
-import { IMAGE_SIZES } from './constants.ts'
+import { IMAGE_SIZES, DOMAIN_BASE_URL } from './constants.ts'
 import { type ScannedImage, type ScannedImageCategory, scanImages } from './scripts/fileScanner.ts'
 import { generateLarge, generateMedium, generateSmall } from './scripts/imageProcessor.ts'
 
@@ -15,8 +15,21 @@ interface Category extends ScannedImageCategory {
   images: ImageWithSizes[]
 }
 
+/**
+ * Prefixes the given URL with the site's base URL.
+*/
+function toAbsoluteUrl(url: string) {
+  const isDev = process.env.ELEVENTY_ENV === 'development'
+  const baseUrl = isDev ? 'localhost:8080' : DOMAIN_BASE_URL
+  return new URL(url, baseUrl).href
+}
+
 export default async function (eleventyConfig: UserConfig) {
   eleventyConfig.setFrontMatterParsingOptions({ language: 'json' })
+
+  eleventyConfig.addGlobalData('baseUrl', DOMAIN_BASE_URL)
+
+  eleventyConfig.addFilter('toAbsoluteUrl', toAbsoluteUrl)
 
   // Ignore some files from output site
   eleventyConfig.ignores.add('README.md')
@@ -70,6 +83,9 @@ export default async function (eleventyConfig: UserConfig) {
   eleventyConfig.addPassthroughCopy(IMAGE_SIZES.small.dir)
   eleventyConfig.addPassthroughCopy(IMAGE_SIZES.medium.dir)
   eleventyConfig.addPassthroughCopy(IMAGE_SIZES.large.dir)
+
+  // Logo
+  eleventyConfig.addPassthroughCopy('zefirefemera-logo-color.png')
 
   // Makes the custom domain work on GH pages
   eleventyConfig.addPassthroughCopy('CNAME')

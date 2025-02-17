@@ -51,8 +51,8 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
       }
     }
 
-    const categorySlug = slugify(categoryDir);
-    const categoryUrl = `/${categorySlug}/index.html`
+    const categorySlug = slugify(categoryDir)
+    const categoryUrl = `/${categorySlug}/`
 
     // Step 2 - build image info
     // ============================
@@ -78,8 +78,8 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
       }
     }
 
-    const imageSlug = slugify(imageFilename);
-    const imageUrl = `/${categorySlug}/${imageSlug}/index.html`;
+    const imageSlug = slugify(imageFilename)
+    const imageUrl = `/${categorySlug}/${imageSlug}/`
 
     return {
       file,

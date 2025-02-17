@@ -61,3 +61,5 @@ export const IMAGE_SIZES: Record<ImageSizeName, ImageSizeDefinition> = {
     formatOptions: FORMAT_OPTIONS_JPEG,
   },
 }
+
+export const DOMAIN_BASE_URL = 'https://drawings.zefirefemera.xyz/'
