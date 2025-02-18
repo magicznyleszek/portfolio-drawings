@@ -16,28 +16,10 @@ Root stuff and some variables
 }
 
 :root {
-  background-color: var(--theme-bg);
-  transition: background 0.3s, color 0.3s;
-  color: var(--theme-text);
-  font-size: 24px;
-  line-height: 1.5rem;
-  font-family: "IM FELL English (hosted)", "Sono", "Hepta Slab", serif;
-  min-width: 100%;
-  min-height: 100%;
-  color-scheme: light dark;
-
-  /* test */
-  background-image:
-    linear-gradient( -20deg, var(--theme-text-05), transparent),
-    linear-gradient( -50deg, var(--theme-accent-primary-05), transparent),
-    linear-gradient( -70deg, var(--theme-text-05), transparent),
-    linear-gradient( -90deg, var(--theme-accent-primary-05), transparent);
-  box-shadow: 2rem -1rem 10rem 0 var(--theme-accent-primary-05) inset;
-
   /* Variables - colors palette */
   --c-vulcan: hsl(230deg 30% 10%);
   --c-link-water: hsl(230deg 40% 90%);
-  --c-purpureus: hsl(280deg 40% 50%); /* --c-light-wisteria dark replacement (TODO should this be calculated instead? 25 less lightness?) */
+  --c-purpureus: hsl(280deg 40% 50%);
   --c-light-wisteria: hsl(270deg 42% 75%);
   --c-logan: hsl(255deg 29% 72%);
   --c-careys-pink: hsl(340deg 42% 75%);
@@ -50,23 +32,17 @@ Root stuff and some variables
   --size-md: calc(1rem * 0.75);
   --size-lg: calc(2rem * 0.75);
 
+  /* Variables - agnostic theme colors */
+  --theme-shadow: hsl(from var(--c-vulcan) h calc(s * 2) calc(l * 0.5) / 40%);
+
   /* Variables - Light Mode theme colors */
   --theme-bg: var(--c-link-water);
   --theme-text: var(--c-vulcan);
-  --theme-accent-primary: var(--c-purpureus);
-
-  /* TODO: add few more colors (from logo) and use in gradients:
-  --theme-accent-secondary: var()
-  --theme-accent-tertiary: var()
-  --theme-accent-quaternary: var()
-  --theme-accent-quinary: var()
-  --theme-accent-senary: var()
-  */
-
-  /* Variables - agnostic theme colors */
-  --theme-accent-primary-05: hsl(from var(--theme-accent-primary) h s l / 5%);
-  --theme-text-05: hsl(from var(--theme-accent-primary) h s l / 5%);
-  --theme-shadow: hsl(from var(--c-vulcan) h calc(s * 2) calc(l * 0.5) / 40%);
+  --theme-accent: var(--c-purpureus);
+  --theme-bg-secondary: var(--c-logan);
+  --theme-bg-tertiary: var(--c-careys-pink);
+  --theme-bg-quaternary: var(--c-pigeon);
+  --theme-bg-quinary: var(--c-lilac);
 
   /* Variables - misc */
   --max-content-width: 44rem;
@@ -87,8 +63,33 @@ Root stuff and some variables
     /* Variables - Dark Mode theme colors */
     --theme-bg: var(--c-vulcan);
     --theme-text: var(--c-link-water);
-    --theme-accent-primary: var(--c-light-wisteria);
+    --theme-accent: var(--c-light-wisteria);
+    --theme-bg-secondary: hsl(from var(--c-logan) h calc(s * 0.7) calc(l * 0.2));
+    --theme-bg-tertiary: hsl(from var(--c-careys-pink) h calc(s * 0.7) calc(l * 0.2));
+    --theme-bg-quaternary: hsl(from var(--c-pigeon) h calc(s * 0.7) calc(l * 0.2));
+    --theme-bg-quinary: hsl(from var(--c-lilac) h calc(s * 0.7) calc(l * 0.2));
   }
+}
+
+html {
+  color: var(--theme-text);
+  font-size: 24px;
+  line-height: 1.5rem;
+  font-family: "IM FELL English (hosted)", "Sono", "Hepta Slab", serif;
+  min-width: 100%;
+  min-height: 100%;
+  color-scheme: light dark;
+
+  /* test */
+  background-color: var(--theme-bg);
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 2400 2400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+    radial-gradient(circle at 48% 44%, var(--theme-bg-secondary) 4%, transparent 56%),
+    radial-gradient(circle at 92% 92%, var(--theme-bg-quaternary) 12%, transparent 74%),
+    radial-gradient(circle at 84% 20%, var(--theme-bg-tertiary) 16%, transparent 84%),
+    radial-gradient(circle at 8% 16%, var(--theme-bg-secondary) 12%, transparent 76%),
+    radial-gradient(circle at 12% 76%, var(--theme-bg-quinary) 16%, transparent 80%);
+  background-blend-mode: overlay, normal, normal, normal, normal, normal;
 }
 
 /*
@@ -105,7 +106,7 @@ Resets and base groundwork
 }
 
 :focus-visible {
-  outline: 0.25rem solid var(--theme-accent-primary);
+  outline: 0.25rem solid var(--theme-accent);
 }
 
 a {
@@ -166,7 +167,7 @@ body {
 }
 
 [am-mainFooter] {
-  color: var(--theme-accent-primary);
+  color: var(--theme-accent);
   margin-top: var(--size-lg);
   font-size: 0.8rem;
 }
@@ -192,7 +193,7 @@ AMCSS Components
 
 a[am-logo] {
   display: inline-block;
-  color: var(--theme-accent-primary);
+  color: var(--theme-accent);
   vertical-align: top;
 }
 
@@ -242,7 +243,7 @@ a[am-logo] svg {
 }
 
 [am-imageList-link]:hover {
-  outline: 2px solid var(--theme-accent-primary);
+  outline: 2px solid var(--theme-accent);
   overflow: hidden;
 }
 
@@ -264,7 +265,7 @@ a[am-logo] svg {
 
 [am-breadcrumbs-active] {
   font-style: italic;
-  color: var(--theme-accent-primary);
+  color: var(--theme-accent);
 }
 
 /* secretLink */
@@ -287,7 +288,7 @@ a[am-logo] svg {
   height: 1rem;
   background: transparent;
   border: none;
-  color: var(--theme-accent-primary);
+  color: var(--theme-accent);
   margin: 0;
   padding: 0;
   cursor: pointer;
