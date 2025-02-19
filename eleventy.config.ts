@@ -1,5 +1,6 @@
 import 'tsx/esm'
 import _ from 'lodash'
+import postcssPlugin from '@jgarber/eleventy-plugin-postcss'
 import type UserConfig from './UserConfig.d.ts'
 import { IMAGE_SIZES, DOMAIN_BASE_URL } from './constants.ts'
 import { type ScannedImage, type ScannedImageCategory, scanImages } from './scripts/fileScanner.ts'
@@ -25,6 +26,9 @@ function toAbsoluteUrl(url: string) {
 }
 
 export default async function (eleventyConfig: UserConfig) {
+  // This will ensure that `styles.css` are present in the final output :bow:
+  eleventyConfig.addPlugin(postcssPlugin)
+
   eleventyConfig.setFrontMatterParsingOptions({ language: 'json' })
 
   eleventyConfig.addGlobalData('baseUrl', DOMAIN_BASE_URL)
@@ -90,7 +94,6 @@ export default async function (eleventyConfig: UserConfig) {
   // Makes the custom domain work on GH pages
   eleventyConfig.addPassthroughCopy('CNAME')
 
-  // Styles :shrug:
-  eleventyConfig.addPassthroughCopy('styles.css')
+  // Make sure fonts are copied :shrug:
   eleventyConfig.addPassthroughCopy('fonts')
 }

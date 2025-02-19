@@ -32,6 +32,9 @@ Root stuff and some variables
   --size-md: calc(1rem * 0.75);
   --size-lg: calc(2rem * 0.75);
 
+  /* Variables - misc (on smaller devices) */
+  --theme-bg-noise: var(--svg-noise-sm);
+
   /* Variables - agnostic theme colors */
   --theme-shadow: hsl(from var(--c-vulcan) h calc(s * 2) calc(l * 0.5) / 40%);
 
@@ -46,15 +49,20 @@ Root stuff and some variables
 
   /* Variables - misc */
   --max-content-width: 44rem;
+  --svg-noise-sm: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 1600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.25' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  --svg-noise-lg: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 1600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* TODO: see if this is sensible, of if rather we should do regular @media for resizing specific selectors */
+/* Instead of using regular @media for resizing specific selectors, we change the variables (magic!). */
 @media (width >= 1000px) {
   :root {
     /* Variables - sizes (on bigger devices) */
     --size-sm: 0.5rem;
     --size-md: 1rem;
     --size-lg: 2rem;
+
+    /* Variables - misc (on smaller devices) */
+  --theme-bg-noise: var(--svg-noise-lg);
   }
 }
 
@@ -64,10 +72,15 @@ Root stuff and some variables
     --theme-bg: var(--c-vulcan);
     --theme-text: var(--c-link-water);
     --theme-accent: var(--c-light-wisteria);
-    --theme-bg-secondary: hsl(from var(--c-logan) h calc(s * 0.7) calc(l * 0.2));
-    --theme-bg-tertiary: hsl(from var(--c-careys-pink) h calc(s * 0.7) calc(l * 0.2));
-    --theme-bg-quaternary: hsl(from var(--c-pigeon) h calc(s * 0.7) calc(l * 0.2));
-    --theme-bg-quinary: hsl(from var(--c-lilac) h calc(s * 0.7) calc(l * 0.2));
+    --theme-bg-secondary: hsl(from var(--c-logan) h calc(s * 0.6) calc(l * 0.4));
+    --theme-bg-tertiary: hsl(from var(--c-careys-pink) h calc(s * 0.6) calc(l * 0.4));
+    --theme-bg-quaternary: hsl(from var(--c-pigeon) h calc(s * 0.6) calc(l * 0.4));
+    --theme-bg-quinary: hsl(from var(--c-lilac) h calc(s * 0.6) calc(l * 0.4));
+  }
+
+  html {
+    /* Dark Mode theme blending modes */
+    background-blend-mode: color-burn, normal, normal, normal, normal, normal;
   }
 }
 
@@ -79,16 +92,16 @@ html {
   min-width: 100%;
   min-height: 100%;
   color-scheme: light dark;
-
-  /* test */
   background-color: var(--theme-bg);
   background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 2400 2400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='16' numOctaves='8' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+    var(--theme-bg-noise),
     radial-gradient(circle at 48% 44%, var(--theme-bg-secondary) 4%, transparent 56%),
     radial-gradient(circle at 92% 92%, var(--theme-bg-quaternary) 12%, transparent 74%),
     radial-gradient(circle at 84% 20%, var(--theme-bg-tertiary) 16%, transparent 84%),
     radial-gradient(circle at 8% 16%, var(--theme-bg-secondary) 12%, transparent 76%),
     radial-gradient(circle at 12% 76%, var(--theme-bg-quinary) 16%, transparent 80%);
+
+  /* Light Mode theme blending modes */
   background-blend-mode: overlay, normal, normal, normal, normal, normal;
 }
 
