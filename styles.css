@@ -32,9 +32,6 @@ Root stuff and some variables
   --size-md: calc(1rem * 0.75);
   --size-lg: calc(2rem * 0.75);
 
-  /* Variables - misc (on smaller devices) */
-  --theme-bg-noise: var(--svg-noise-sm);
-
   /* Variables - agnostic theme colors */
   --theme-shadow: hsl(from var(--c-vulcan) h calc(s * 2) calc(l * 0.5) / 40%);
 
@@ -42,15 +39,13 @@ Root stuff and some variables
   --theme-bg: var(--c-link-water);
   --theme-text: var(--c-vulcan);
   --theme-accent: var(--c-purpureus);
-  --theme-bg-secondary: var(--c-logan);
-  --theme-bg-tertiary: var(--c-careys-pink);
-  --theme-bg-quaternary: var(--c-pigeon);
-  --theme-bg-quinary: var(--c-lilac);
+  --theme-bg-secondary: hsl(from var(--c-logan) h s calc(l * 1.15));
+  --theme-bg-tertiary: hsl(from var(--c-careys-pink) h s calc(l * 1.15));
+  --theme-bg-quaternary: hsl(from var(--c-pigeon) h s calc(l * 1.15));
+  --theme-bg-quinary: hsl(from var(--c-lilac) h s calc(l * 1.15));
 
   /* Variables - misc */
   --max-content-width: 44rem;
-  --svg-noise-sm: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 1600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  --svg-noise-lg: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 1600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,15 +54,10 @@ Root stuff and some variables
     --theme-bg: var(--c-vulcan);
     --theme-text: var(--c-link-water);
     --theme-accent: var(--c-light-wisteria);
-    --theme-bg-secondary: hsl(from var(--c-logan) h calc(s * 0.6) calc(l * 0.4));
-    --theme-bg-tertiary: hsl(from var(--c-careys-pink) h calc(s * 0.6) calc(l * 0.4));
-    --theme-bg-quaternary: hsl(from var(--c-pigeon) h calc(s * 0.6) calc(l * 0.4));
-    --theme-bg-quinary: hsl(from var(--c-lilac) h calc(s * 0.6) calc(l * 0.4));
-  }
-
-  html {
-    /* Dark Mode theme blending modes */
-    background-blend-mode: color-burn, normal, normal, normal, normal, normal;
+    --theme-bg-secondary: hsl(from var(--c-logan) h calc(s * 0.66) calc(l * 0.33));
+    --theme-bg-tertiary: hsl(from var(--c-careys-pink) h calc(s * 0.66) calc(l * 0.33));
+    --theme-bg-quaternary: hsl(from var(--c-pigeon) h calc(s * 0.66) calc(l * 0.33));
+    --theme-bg-quinary: hsl(from var(--c-lilac) h calc(s * 0.66) calc(l * 0.33));
   }
 }
 
@@ -78,17 +68,6 @@ Root stuff and some variables
     --size-sm: 0.5rem;
     --size-md: 1rem;
     --size-lg: 2rem;
-
-    /* Variables - misc (on smaller devices) */
-  --theme-bg-noise: var(--svg-noise-lg);
-  }
-}
-
-@media (width <= 1024px) {
-  html {
-    /* This is a hackfix for `background-blend-mode` not working if `background-repeat`/size is present bug, see:
-    https://bugs.webkit.org/show_bug.cgi?id=259081. The bug happens on Safari and on iOS browsers (and possibly more) */
-    background-size: 1024px;
   }
 }
 
@@ -102,15 +81,11 @@ html {
   color-scheme: light dark;
   background-color: var(--theme-bg);
   background-image:
-    var(--theme-bg-noise),
     radial-gradient(circle at 48% 44%, var(--theme-bg-secondary) 4%, transparent 56%),
     radial-gradient(circle at 92% 92%, var(--theme-bg-quaternary) 12%, transparent 74%),
     radial-gradient(circle at 84% 20%, var(--theme-bg-tertiary) 16%, transparent 84%),
     radial-gradient(circle at 8% 16%, var(--theme-bg-secondary) 12%, transparent 76%),
     radial-gradient(circle at 12% 76%, var(--theme-bg-quinary) 16%, transparent 80%);
-
-  /* Light Mode theme blending modes */
-  background-blend-mode: overlay, normal, normal, normal, normal, normal;
 }
 
 /*
