@@ -49,21 +49,8 @@ Root stuff and some variables
 
   /* Variables - misc */
   --max-content-width: 44rem;
-  --svg-noise-sm: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 1600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.25' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  --svg-noise-lg: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 1600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Instead of using regular @media for resizing specific selectors, we change the variables (magic!). */
-@media (width >= 1000px) {
-  :root {
-    /* Variables - sizes (on bigger devices) */
-    --size-sm: 0.5rem;
-    --size-md: 1rem;
-    --size-lg: 2rem;
-
-    /* Variables - misc (on smaller devices) */
-  --theme-bg-noise: var(--svg-noise-lg);
-  }
+  --svg-noise-sm: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 1600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  --svg-noise-lg: url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 1600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 @media (prefers-color-scheme: dark) {
@@ -81,6 +68,27 @@ Root stuff and some variables
   html {
     /* Dark Mode theme blending modes */
     background-blend-mode: color-burn, normal, normal, normal, normal, normal;
+  }
+}
+
+/* Instead of using regular @media for resizing specific selectors, we change the variables (magic!). */
+@media (width >= 1000px) {
+  :root {
+    /* Variables - sizes (on bigger devices) */
+    --size-sm: 0.5rem;
+    --size-md: 1rem;
+    --size-lg: 2rem;
+
+    /* Variables - misc (on smaller devices) */
+  --theme-bg-noise: var(--svg-noise-lg);
+  }
+}
+
+@media (width <= 1024px) {
+  html {
+    /* This is a hackfix for `background-blend-mode` not working if `background-repeat`/size is present bug, see:
+    https://bugs.webkit.org/show_bug.cgi?id=259081. The bug happens on Safari and on iOS browsers (and possibly more) */
+    background-size: 1024px;
   }
 }
 
