@@ -111,18 +111,22 @@ Resets and base groundwork
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration-line: none;
+  text-decoration-thickness: 1px;
 
   /* For focus styles */
   border-radius: 2px;
 }
 
 p a {
-  text-decoration: underline solid 1px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+
 }
 
 a:hover {
-  text-decoration: underline wavy 1px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
 }
 
 img {
