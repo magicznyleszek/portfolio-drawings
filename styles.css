@@ -19,13 +19,12 @@ Root stuff and some variables
   /* Variables - colors palette */
   --c-vulcan: hsl(230deg 30% 10%);
   --c-link-water: hsl(230deg 40% 90%);
-  --c-purpureus: hsl(280deg 40% 50%);
   --c-light-wisteria: hsl(270deg 42% 75%);
   --c-logan: hsl(255deg 29% 72%);
   --c-careys-pink: hsl(340deg 42% 75%);
   --c-pigeon: hsl(190deg 29% 72%);
   --c-lilac: hsl(300deg 29% 72%);
-  --c-rum: hsl(269deg 18% 43%); /* this is logo color from logo illustrator file, but it doesn't work well */
+  --c-rum: hsl(269deg 18% 43%);
 
   /* Variables - sizes (on smaller devices) */
   --size-sm: calc(0.5rem * 0.75);
@@ -38,7 +37,7 @@ Root stuff and some variables
   /* Variables - Light Mode theme colors */
   --theme-bg: var(--c-link-water);
   --theme-text: var(--c-vulcan);
-  --theme-accent: var(--c-purpureus);
+  --theme-accent: var(--c-rum);
   --theme-bg-secondary: hsl(from var(--c-logan) h s calc(l * 1.15));
   --theme-bg-tertiary: hsl(from var(--c-careys-pink) h s calc(l * 1.15));
   --theme-bg-quaternary: hsl(from var(--c-pigeon) h s calc(l * 1.15));
@@ -283,7 +282,7 @@ a[am-logo] svg {
 /* shareButton */
 
 [am-shareButton] {
-  display: block;
+  display: none;
   width: 1rem;
   height: 1rem;
   background: transparent;
@@ -296,4 +295,11 @@ a[am-logo] svg {
 
 [am-shareButton]:hover {
   color: var(--theme-text);
+}
+
+/* We hide the button on non-mobile devices as it doesn't do anything on them (I think). */
+@media (hover: none) {
+  [am-shareButton] {
+    display: initial;
+  }
 }
