@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
     <link rel="home" href="https://drawings.zefirefemera.xyz/">
-    <meta rel="canonical" href="https://drawings.zefirefemera.xyz/2009-bakteria/">
+    <meta rel="canonical" href="https://drawings.zefirefemera.xyz/2014-mortal-gods/mortal-gods-rekom-color-2014-digital/">
 
-    <title>2009 bakteria</title>
+    <title>mortal gods rekom color (2014) digital</title>
     <meta name="author" content="Zefir Efemera">
     <meta name="description" content="Collection of drawings made over the years.">
     <link rel="author" href="https://drawings.zefirefemera.xyz/humans.txt" />
@@ -20,10 +20,10 @@
     <link rel="stylesheet" href="/styles.css" type="text/css">
 
     <!--  Essential META Tags -->
-    <meta property="og:title" content="2009 bakteria" />
+    <meta property="og:title" content="mortal gods rekom color (2014) digital" />
     <meta property="og:type" content="article" />
-    <meta property="og:image" content="https://drawings.zefirefemera.xyz/undefined" />
-    <meta property="og:url" content="https://drawings.zefirefemera.xyz/2009-bakteria/" />
+    <meta property="og:image" content="https://drawings.zefirefemera.xyz/images-large/2014%20mortal%20gods/mortal%20gods%20rekom%20color%20(2014)%20digital.jpeg" />
+    <meta property="og:url" content="https://drawings.zefirefemera.xyz/2014-mortal-gods/mortal-gods-rekom-color-2014-digital/" />
     <meta name="twitter:card" content="summary_large_image">
 
     <!--  Non-Essential, But Recommended -->
@@ -48,52 +48,55 @@
 
   
   /
-  <a am-breadcrumbs-active
-    href="/2009-bakteria">2009 bakteria</a>
+  <a 
+    href="/2014-mortal-gods">2014 mortal gods</a>
   
 
+  
+  /
+  <a am-breadcrumbs-active
+    href="/2014-mortal-gods/mortal-gods-rekom-color-2014-digital">mortal gods rekom color (2014) digital</a>
   
 </nav>
 
 
 <article>
   
-  <p>Album cover for a parody grindcore band from Mexico</p>
-  
 
-  <ul am-imageList="medium">
-  
-  <li am-imageList-item>
-    <a am-imageList-link href="/2009-bakteria/bakteria-band-front-cover-2009-digital/">
-      <img am-imageList-image src="/images-medium/2009 bakteria/bakteria band front cover (2009) digital.gif" alt="bakteria-band-front-cover-2009-digital" title="bakteria band front cover (2009) digital">
-    </a>
-  </li>
-  
-  <li am-imageList-item>
-    <a am-imageList-link href="/2009-bakteria/bakteria-band-portrait-of-jesus-2009-digital/">
-      <img am-imageList-image src="/images-medium/2009 bakteria/bakteria band portrait of jesus (2009) digital.gif" alt="bakteria-band-portrait-of-jesus-2009-digital" title="bakteria band portrait of jesus (2009) digital">
-    </a>
-  </li>
-  
-  <li am-imageList-item>
-    <a am-imageList-link href="/2009-bakteria/bakteria-band-portrait-of-manuel-2009-digital/">
-      <img am-imageList-image src="/images-medium/2009 bakteria/bakteria band portrait of manuel (2009) digital.gif" alt="bakteria-band-portrait-of-manuel-2009-digital" title="bakteria band portrait of manuel (2009) digital">
-    </a>
-  </li>
-  
-  <li am-imageList-item>
-    <a am-imageList-link href="/2009-bakteria/bakteria-band-portrait-of-pedro-2009-digital/">
-      <img am-imageList-image src="/images-medium/2009 bakteria/bakteria band portrait of pedro (2009) digital.gif" alt="bakteria-band-portrait-of-pedro-2009-digital" title="bakteria band portrait of pedro (2009) digital">
-    </a>
-  </li>
-  
-  <li am-imageList-item>
-    <a am-imageList-link href="/2009-bakteria/bakteria-band-portrait-of-umberto-2009-digital/">
-      <img am-imageList-image src="/images-medium/2009 bakteria/bakteria band portrait of umberto (2009) digital.gif" alt="bakteria-band-portrait-of-umberto-2009-digital" title="bakteria band portrait of umberto (2009) digital">
-    </a>
-  </li>
-  
-</ul>
+  <a am-imageLink title="mortal gods rekom color (2014) digital" href="/images-original/2014 mortal gods/mortal gods rekom color (2014) digital.jpg">
+    <img am-imageLink-image src="/images-large/2014 mortal gods/mortal gods rekom color (2014) digital.jpeg" alt="mortal-gods-rekom-color-2014-digital">
+  </a>
+
+  <script>
+  const shareImageAsset = async (imageUrl, pageUrl, title) => {
+    const response = await fetch(imageUrl.toString());
+    const blob = await response.blob();
+
+    const filesArray = [
+      new File([blob], imageUrl, {
+        type: 'image/jpeg',
+        lastModified: new Date().getTime(),
+      }),
+    ];
+    const shareData = {
+      title: title,
+      url: pageUrl,
+      files: filesArray,
+    };
+
+    console.info('shareImageAsset final data:', shareData);
+
+    if (navigator.canShare && navigator.canShare(shareData)) {
+      await navigator.share(shareData);
+    }
+  };
+</script>
+
+<button
+  title="Share"
+  am-shareButton
+  onclick="shareImageAsset('/images-large/2014 mortal gods/mortal gods rekom color (2014) digital.jpeg', 'https://drawings.zefirefemera.xyz/2014-mortal-gods/mortal-gods-rekom-color-2014-digital/', 'mortal gods rekom color (2014) digital')"
+>&heartsuit;</button>
 
 </article>
 
