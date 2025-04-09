@@ -18,7 +18,7 @@
 
 <article>
   {% if image.description %}
-  <p>{{ image.description }}</p>
+  <p>{{ image.description | safe }}</p>
   {% endif %}
 
   <a am-imageLink title="{{ image.title }}" href="/{{ image.file }}">

@@ -17,7 +17,7 @@
 
 <article>
   {% if category.description %}
-  <p>{{ category.description }}</p>
+  <p>{{ category.description |safe }}</p>
   {% endif %}
 
   {{ component('imageList', {
