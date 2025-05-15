@@ -56,11 +56,17 @@ export default async function (eleventyConfig: UserConfig) {
   )
   console.info('scan and generate images DONE')
 
-  // We sort images by their category directory descending, and then by name ascending
-  images = images.sort((a, b) => b.category.name.localeCompare(a.category.name) || a.file.localeCompare(b.file))
+  // Create collection of all images sorted by title
+  const imagesByAbc = [...images]
+  imagesByAbc.sort((a, b) => a.title.localeCompare(b.title))
+  eleventyConfig.addCollection('imagesByAbc', async () => imagesByAbc)
 
+  // Create collection of images sorted by their category directory descending,
+  // and then by file name ascending
+  images.sort((a, b) => a.category.name.localeCompare(b.category.name) || a.file.localeCompare(b.file))
   eleventyConfig.addCollection('images', async () => images)
 
+  // Create collection of images grouped by category
   eleventyConfig.addCollection('imagesByCategory', async () => {
     const categories: Category[] = []
     const grouped = _.chain(images)

@@ -1,0 +1,21 @@
+---
+{
+  "permalink": "search.json",
+  "eleventyExcludeFromCollections": true
+}
+---
+{
+  "results": [
+    {%- for image in collections.imagesByAbc %}
+    {
+      "url": "{{ image.url }}",
+      "title": "{{ image.title }}",
+      "description": "{{ image.description }}",
+      "small": "{{ image.small }}",
+      "medium": "{{ image.medium }}",
+      "large": "{{ image.large }}"
+    }
+    {% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}

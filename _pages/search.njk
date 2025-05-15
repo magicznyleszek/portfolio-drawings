@@ -1,0 +1,90 @@
+---
+{
+  "layout": "layouts/base.njk",
+  "permalink": "search/index.html"
+}
+---
+{%- from "system/component.njk" import component -%}
+
+{{ component('breadcrumbs') }}
+
+<script type="text/javascript">
+  function setPhraseInInput(phrase) {
+    document.getElementById('search-phrase').setAttribute('value', phrase);
+  }
+
+  function setPhraseInQuery(phrase) {
+    const url = new URL(window.location.href);
+	  url.searchParams.set('q', phrase);
+	  history.pushState({}, '', url);
+  }
+
+  function getPhraseFromQuery() {
+    const url = window.location.href;
+		const params = new URLSearchParams(new URL(url).search);
+		return params.get('q');
+  }
+
+  async function runSearch(phrase) {
+    // Fetch the full search payload
+    const searchResponse = await fetch('/search.json')
+    const responseBody = await searchResponse.json()
+
+    // Filter the results array for items that contain the phrase (ignoring case)
+    const filtered = responseBody.results.filter(item => `${item.title}${item.description}`.toLowerCase().includes(phrase.toLowerCase()))
+
+    // Get the DOM element to populate with results
+    const resultsEl = document.getElementById("search-results")
+
+    // Special handling if nothing found
+    if (filtered.length === 0) {
+      resultsEl.innerHTML = 'Nothing found…'
+      return
+    }
+
+    // Build up the inner HTML for the search results div
+    let compiledString = ''
+    for (let i = 0; i < filtered.length; i++) {
+      const image = filtered[i]
+      // const resultItem = `<div><a href="${image.url}">${image.title}</a></div>`
+      const resultItem = `
+        <a am-searchResult href="${ image.url }">
+          <img src="/${ image.small }" alt="${ image.slug }" title="${ image.title }" />
+          <span>${ image.title }</span>
+        </a>
+      `
+      compiledString = `${compiledString}${resultItem}`
+    }
+
+    // Assign the compiled string to the innerHTML for the div
+    resultsEl.innerHTML = compiledString
+  }
+
+  function handleSearchSubmit(evt) {
+    evt.preventDefault();
+    const formData = new FormData(evt.target);
+    const phrase = formData.get('phrase')
+    if (phrase) {
+      setPhraseInQuery(phrase)
+      runSearch(phrase)
+    }
+  }
+
+  // Run search if q is present
+  document.addEventListener('DOMContentLoaded', () => {
+    const phrase = getPhraseFromQuery();
+    if (phrase) {
+      setPhraseInInput(phrase)
+      runSearch(phrase);
+    }
+  })
+</script>
+
+<article>
+  <form am-searchBox onsubmit="handleSearchSubmit(event)">
+    <input type="search" autocomplete="off" id="search-phrase" name="phrase" />
+    <button type="submit">Search</button>
+  </form>
+
+  <section id="search-results"></section>
+</article>
