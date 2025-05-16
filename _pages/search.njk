@@ -81,9 +81,9 @@
 </script>
 
 <article>
-  <form am-searchBox onsubmit="handleSearchSubmit(event)">
-    <input type="search" autocomplete="off" id="search-phrase" name="phrase" />
-    <button type="submit">Search</button>
+  <form am-searchForm onsubmit="handleSearchSubmit(event)">
+    <input am-searchForm-input type="search" autocomplete="off" id="search-phrase" name="phrase" />
+    <button am-searchForm-button type="submit">search</button>
   </form>
 
   <section id="search-results"></section>

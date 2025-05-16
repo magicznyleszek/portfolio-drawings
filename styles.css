@@ -45,6 +45,7 @@ Root stuff and some variables
 
   /* Variables - misc */
   --max-content-width: 44rem;
+  --border-radius: 2px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -110,7 +111,7 @@ a {
   text-decoration-thickness: 1px;
 
   /* For focus styles */
-  border-radius: 2px;
+  border-radius: var(--border-radius);
 }
 
 p a {
@@ -127,7 +128,7 @@ a:hover {
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 2px;
+  border-radius: var(--border-radius);
   box-shadow: 1px 1px 1px var(--theme-shadow);
 }
 
@@ -246,26 +247,6 @@ a[am-logo] svg {
   overflow: hidden;
 }
 
-/* search box */
-
-[am-searchBox] {
-  margin-bottom: var(--size-lg);
-}
-
-/* search result */
-
-[am-searchResult] {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-  gap: var(--size-sm);;
-}
-
-[am-searchResult]:not(:last-child) {
-  margin-bottom: var(--size-md);
-}
-
 /* category */
 
 [am-category]:not(:last-of-type) {
@@ -285,18 +266,6 @@ a[am-logo] svg {
 [am-breadcrumbs-active] {
   font-style: italic;
   color: var(--theme-accent);
-}
-
-/* secretLink */
-
-[am-secretLink] {
-  transition: opacity 0.25s;
-  transition-delay: 0.25s;
-  opacity: 0;
-}
-
-[am-secretLink]:hover {
-  opacity: 1;
 }
 
 /* shareButton */
@@ -322,4 +291,58 @@ a[am-logo] svg {
   [am-shareButton] {
     display: initial;
   }
+}
+
+/* search form */
+
+form[am-searchForm] {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: var(--size-sm);
+  margin-bottom: var(--size-lg);
+}
+
+input[am-searchForm-input],
+button[am-searchForm-button] {
+  border-radius: var(--border-radius);
+  border: 2px solid var(--theme-accent);
+  padding: var(--size-sm) var(--size-md);
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input[am-searchForm-input] {
+  flex: 1;
+  color: inherit;
+  background-color: transparent;
+}
+
+button[am-searchForm-button] {
+  color: var(--theme-bg);
+  background-color: var(--theme-accent);
+  cursor: pointer;
+}
+
+button[am-searchForm-button]:hover {
+  border-color: var(--theme-text);
+  background-color: var(--theme-text);
+}
+
+button[am-searchForm-button]:active {
+  transform: translateY(1px);
+}
+
+/* search result */
+
+[am-searchResult] {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  gap: var(--size-sm);;
+}
+
+[am-searchResult]:not(:last-child) {
+  margin-bottom: var(--size-md);
 }
