@@ -316,6 +316,7 @@ input[am-searchForm-input] {
   flex: 1;
   color: inherit;
   background-color: transparent;
+  width: 100%;
 }
 
 button[am-searchForm-button] {
