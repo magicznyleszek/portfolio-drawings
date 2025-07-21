@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -35,6 +34,48 @@
   </head>
 
   <body>
+    
+    <script type="text/javascript">
+  (function() {
+    // Config
+    const NSFW_STORAGE_KEY = 'shouldNsfwContentBeDisplayed'
+    const CLASS_NAME_NSFW_ALLOWED = 'nsfw-allowed'
+    const CLASS_NAME_NSFW_PROHIBITED = 'nsfw-prohibited'
+
+    function applyBodyClassName(isNsfwAllowed) {
+      console.log('applyBodyClassName', isNsfwAllowed)
+      if (isNsfwAllowed) {
+        document.body.classList.add(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.remove(CLASS_NAME_NSFW_PROHIBITED)
+      } else {
+        document.body.classList.remove(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.add(CLASS_NAME_NSFW_PROHIBITED)
+      }
+    }
+
+    function confirmNsfwContent() {
+      const result = confirm('Want to see NSFW content?')
+      sessionStorage.setItem(NSFW_STORAGE_KEY, result)
+      applyBodyClassName(result === true)
+    }
+    // Make it accessible by the trigger
+    window.confirmNsfwContent = confirmNsfwContent
+
+    function checkSessionStorage() {
+      const value = sessionStorage.getItem(NSFW_STORAGE_KEY)
+      if (value !== null) {
+        applyBodyClassName(value === 'true')
+      } else {
+        confirmNsfwContent()
+      }
+    }
+
+    // Initialize
+    checkSessionStorage()
+  })()
+</script>
+
+
     <header am-mainHeader am-mainCentered>
       <a am-logo href="/">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 32">
@@ -64,265 +105,265 @@
 
   <ul am-imageList="medium">
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/abstraction-realness-chess-meat-2024/">
       <img am-imageList-image src="/images-medium/2024/abstraction realness chess meat (2024).gif" alt="abstraction-realness-chess-meat-2024" title="abstraction realness chess meat (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/bible-black-tribute-2024/">
       <img am-imageList-image src="/images-medium/2024/Bible Black tribute (2024).gif" alt="bible-black-tribute-2024" title="Bible Black tribute (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/big-festivalowski-tee-banan/">
       <img am-imageList-image src="/images-medium/2024/big festivalowski tee banan.gif" alt="big-festivalowski-tee-banan" title="big festivalowski tee banan">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/big-festivalowski-tee-bflogo/">
       <img am-imageList-image src="/images-medium/2024/big festivalowski tee bflogo.gif" alt="big-festivalowski-tee-bflogo" title="big festivalowski tee bflogo">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/big-festivalowski-tee-dywan/">
       <img am-imageList-image src="/images-medium/2024/big festivalowski tee dywan.gif" alt="big-festivalowski-tee-dywan" title="big festivalowski tee dywan">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/bred-to-suffer-international-childrens-day-2024-2024/">
       <img am-imageList-image src="/images-medium/2024/Bred to suffer! International Children&#39;s Day 2024 (2024).gif" alt="bred-to-suffer-international-childrens-day-2024-2024" title="Bred to suffer! International Children&#39;s Day 2024 (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/bulbasaur-2024/">
       <img am-imageList-image src="/images-medium/2024/Bulbasaur (2024).gif" alt="bulbasaur-2024" title="Bulbasaur (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/chwasty-logo-1-2024/">
       <img am-imageList-image src="/images-medium/2024/chwasty logo 1 (2024).gif" alt="chwasty-logo-1-2024" title="chwasty logo 1 (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/chwasty-logo-2-2024/">
       <img am-imageList-image src="/images-medium/2024/chwasty logo 2 (2024).gif" alt="chwasty-logo-2-2024" title="chwasty logo 2 (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/embrace-2024-based-on-emma-wondra-photo-of-cierra-virgo/">
       <img am-imageList-image src="/images-medium/2024/Embrace (2024) based on Emma Wondra photo of Cierra @virgo.s.dont.cry and Mariah Mercedes.gif" alt="embrace-2024-based-on-emma-wondra-photo-of-cierra-virgo" title="Embrace (2024) based on Emma Wondra photo of Cierra @virgo">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/epic-fantasy-trans-babe-with-poorly-drawn-anatomy-due-to-insufficient-knowledge-of-the-nevertheless-satisfied-author-wip-2024/">
       <img am-imageList-image src="/images-medium/2024/epic fantasy trans babe with poorly drawn anatomy due to insufficient knowledge of the nevertheless satisfied author WIP (2024).gif" alt="epic-fantasy-trans-babe-with-poorly-drawn-anatomy-due-to-insufficient-knowledge-of-the-nevertheless-satisfied-author-wip-2024" title="epic fantasy trans babe with poorly drawn anatomy due to insufficient knowledge of the nevertheless satisfied author WIP (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/gastly-shiny-gastly-and-gigantamax-starmie-hanging-out-near-aqua-jewel-2024-with-julek/">
       <img am-imageList-image src="/images-medium/2024/Gastly, Shiny Gastly, and Gigantamax Starmie hanging out near Aqua Jewel (2024) with Julek.gif" alt="gastly-shiny-gastly-and-gigantamax-starmie-hanging-out-near-aqua-jewel-2024-with-julek" title="Gastly, Shiny Gastly, and Gigantamax Starmie hanging out near Aqua Jewel (2024) with Julek">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/gwiezdny-nagrobek-2024/">
       <img am-imageList-image src="/images-medium/2024/gwiezdny nagrobek (2024).gif" alt="gwiezdny-nagrobek-2024" title="gwiezdny nagrobek (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/israel-genocide-forces-2024/">
       <img am-imageList-image src="/images-medium/2024/Israel Genocide Forces (2024).gif" alt="israel-genocide-forces-2024" title="Israel Genocide Forces (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/kiss-2024-based-on-a-photo-by-emma-wondra-of-iamjadefox-and-jaydencummings-kissing/">
       <img am-imageList-image src="/images-medium/2024/Kiss (2024) - based on a photo by Emma Wondra of @iamjadefox and @jaydencummings kissing.gif" alt="kiss-2024-based-on-a-photo-by-emma-wondra-of-iamjadefox-and-jaydencummings-kissing" title="Kiss (2024) - based on a photo by Emma Wondra of @iamjadefox and @jaydencummings kissing">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/kwiatek-przytula-weza-pomiedzy-nimi-gwiazda-2024-based-on-juleks-drawing/">
       <img am-imageList-image src="/images-medium/2024/Kwiatek przytula węża, pomiędzy nimi gwiazda (2024) based on Julek&#39;s drawing.gif" alt="kwiatek-przytula-weza-pomiedzy-nimi-gwiazda-2024-based-on-juleks-drawing" title="Kwiatek przytula węża, pomiędzy nimi gwiazda (2024) based on Julek&#39;s drawing">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/parasteatoda-tepidariorum-playing-with-tamagochi-2024/">
       <img am-imageList-image src="/images-medium/2024/Parasteatoda tepidariorum playing with Tamagochi (2024).gif" alt="parasteatoda-tepidariorum-playing-with-tamagochi-2024" title="Parasteatoda tepidariorum playing with Tamagochi (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/patykowy-blaster-julka-nr-1-2024/">
       <img am-imageList-image src="/images-medium/2024/Patykowy blaster Julka nr 1 (2024).gif" alt="patykowy-blaster-julka-nr-1-2024" title="Patykowy blaster Julka nr 1 (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/patykowy-blaster-julka-nr-2-2024/">
       <img am-imageList-image src="/images-medium/2024/Patykowy blaster Julka nr 2 (2024).gif" alt="patykowy-blaster-julka-nr-2-2024" title="Patykowy blaster Julka nr 2 (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/portrait-of-bodybuilder-tadalafellas-nonchalantly-showing-off-his-impressive-body-2024/">
       <img am-imageList-image src="/images-medium/2024/portrait of Bodybuilder Tadalafellas nonchalantly showing off his impressive body (2024).gif" alt="portrait-of-bodybuilder-tadalafellas-nonchalantly-showing-off-his-impressive-body-2024" title="portrait of Bodybuilder Tadalafellas nonchalantly showing off his impressive body (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/portrait-of-frances-cannon-feeling-super-comfy-in-their-studio-2-2024/">
       <img am-imageList-image src="/images-medium/2024/portrait of Frances Cannon feeling super comfy in their studio 2 (2024).gif" alt="portrait-of-frances-cannon-feeling-super-comfy-in-their-studio-2-2024" title="portrait of Frances Cannon feeling super comfy in their studio 2 (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/portrait-of-jordyn-tyl3r-2024-based-on-a-abnormal-tits-sic-reddit-photo/">
       <img am-imageList-image src="/images-medium/2024/portrait of JordynTyl3r (2024) based on a abnormal_tits (sic!) reddit photo.gif" alt="portrait-of-jordyn-tyl3r-2024-based-on-a-abnormal-tits-sic-reddit-photo" title="portrait of JordynTyl3r (2024) based on a abnormal_tits (sic!) reddit photo">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/portrait-of-minami-gessel-standing-in-a-mountain-lake-2024/">
       <img am-imageList-image src="/images-medium/2024/portrait of Minami Gessel standing in a mountain lake (2024).gif" alt="portrait-of-minami-gessel-standing-in-a-mountain-lake-2024" title="portrait of Minami Gessel standing in a mountain lake (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/portrait-of-natalia-bathing-with-eucalyptus-combined-parts-without-foil-2024/">
       <img am-imageList-image src="/images-medium/2024/portrait of natalia bathing with eucalyptus, combined parts without foil (2024).gif" alt="portrait-of-natalia-bathing-with-eucalyptus-combined-parts-without-foil-2024" title="portrait of natalia bathing with eucalyptus, combined parts without foil (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/portrait-of-natalia-bathing-with-eucalyptus-part-1-2024/">
       <img am-imageList-image src="/images-medium/2024/portrait of natalia bathing with eucalyptus, part 1 (2024).gif" alt="portrait-of-natalia-bathing-with-eucalyptus-part-1-2024" title="portrait of natalia bathing with eucalyptus, part 1 (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/portrait-of-natalia-bathing-with-eucalyptus-part-2-2024/">
       <img am-imageList-image src="/images-medium/2024/portrait of natalia bathing with eucalyptus, part 2 (2024).gif" alt="portrait-of-natalia-bathing-with-eucalyptus-part-2-2024" title="portrait of natalia bathing with eucalyptus, part 2 (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/portrait-of-natalia-crouching-and-being-fierce-after-morning-practice-2024/">
       <img am-imageList-image src="/images-medium/2024/portrait of Natalia crouching and being fierce after morning practice (2024).gif" alt="portrait-of-natalia-crouching-and-being-fierce-after-morning-practice-2024" title="portrait of Natalia crouching and being fierce after morning practice (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2024/portrait-of-nude-person-doing-unusal-pose-on-a-bed-2024/">
       <img am-imageList-image src="/images-medium/2024/portrait of Nude person doing unusal pose on a bed (2024).gif" alt="portrait-of-nude-person-doing-unusal-pose-on-a-bed-2024" title="portrait of Nude person doing unusal pose on a bed (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/portrait-of-sonya-mohova-dancing-2024/">
       <img am-imageList-image src="/images-medium/2024/portrait of Sonya Mohova dancing (2024).gif" alt="portrait-of-sonya-mohova-dancing-2024" title="portrait of Sonya Mohova dancing (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/rekolekcja-zapierajacego-dech-w-piersiach-upadku-rowerowego-2024/">
       <img am-imageList-image src="/images-medium/2024/rekolekcja zapierającego dech w piersiach upadku rowerowego (2024).gif" alt="rekolekcja-zapierajacego-dech-w-piersiach-upadku-rowerowego-2024" title="rekolekcja zapierającego dech w piersiach upadku rowerowego (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/seashell-2024-print-copy-colored/">
       <img am-imageList-image src="/images-medium/2024/Seashell (2024) print copy colored.gif" alt="seashell-2024-print-copy-colored" title="Seashell (2024) print copy colored">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/seks-w-trakcie-opadow-sniegu-2024/">
       <img am-imageList-image src="/images-medium/2024/seks w trakcie opadów śniegu (2024).gif" alt="seks-w-trakcie-opadow-sniegu-2024" title="seks w trakcie opadów śniegu (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/selfportrait-fragile-mirror-selfie-by-the-sea-2024-wip/">
       <img am-imageList-image src="/images-medium/2024/selfportrait - fragile mirror selfie by the sea (2024) WIP.gif" alt="selfportrait-fragile-mirror-selfie-by-the-sea-2024-wip" title="selfportrait - fragile mirror selfie by the sea (2024) WIP">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/selfportrait-nagi-autoportret-z-zaglada-za-oknem-2024/">
       <img am-imageList-image src="/images-medium/2024/selfportrait - nagi autoportret z zagładą za oknem (2024).gif" alt="selfportrait-nagi-autoportret-z-zaglada-za-oknem-2024" title="selfportrait - nagi autoportret z zagładą za oknem (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/selfportrait-zefir-triptych-1-real-zefir-2024/">
       <img am-imageList-image src="/images-medium/2024/selfportrait - Zefir triptych 1 - Real Zefir (2024).gif" alt="selfportrait-zefir-triptych-1-real-zefir-2024" title="selfportrait - Zefir triptych 1 - Real Zefir (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/selfportrait-zefir-triptych-2-perceived-zefir-2024/">
       <img am-imageList-image src="/images-medium/2024/selfportrait - Zefir triptych 2 - Perceived Zefir (2024).gif" alt="selfportrait-zefir-triptych-2-perceived-zefir-2024" title="selfportrait - Zefir triptych 2 - Perceived Zefir (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/selfportrait-zefir-triptych-3-true-zefir-2024/">
       <img am-imageList-image src="/images-medium/2024/selfportrait - Zefir triptych 3 - True Zefir (2024).gif" alt="selfportrait-zefir-triptych-3-true-zefir-2024" title="selfportrait - Zefir triptych 3 - True Zefir (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/selfportrait-from-below-2024/">
       <img am-imageList-image src="/images-medium/2024/selfportrait from below (2024).gif" alt="selfportrait-from-below-2024" title="selfportrait from below (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2024/selfportrait-nude-with-vhemt-poster-2024/">
       <img am-imageList-image src="/images-medium/2024/selfportrait nude with VHEMT poster (2024).gif" alt="selfportrait-nude-with-vhemt-poster-2024" title="selfportrait nude with VHEMT poster (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/skrepowana-miekkosc-natalii-2024/">
       <img am-imageList-image src="/images-medium/2024/Skrępowana miękkość Natalii (2024).gif" alt="skrepowana-miekkosc-natalii-2024" title="Skrępowana miękkość Natalii (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/star-wars-wojenny-tie-fighter-2024/">
       <img am-imageList-image src="/images-medium/2024/Star Wars™ wojenny TIE fighter (2024).gif" alt="star-wars-wojenny-tie-fighter-2024" title="Star Wars™ wojenny TIE fighter (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/toy-nazi-2024/">
       <img am-imageList-image src="/images-medium/2024/Toy Nazi (2024).gif" alt="toy-nazi-2024" title="Toy Nazi (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2024/vileplume-with-a-sword-2024/">
       <img am-imageList-image src="/images-medium/2024/Vileplume with a sword (2024).gif" alt="vileplume-with-a-sword-2024" title="Vileplume with a sword (2024)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2024/xconfessions-calor-with-chanelle-blu-and-dani-sunii-2024-print-copy-colored/">
       <img am-imageList-image src="/images-medium/2024/Xconfessions Calor with Chanelle Blu and Dani Sunii (2024) print copy colored.gif" alt="xconfessions-calor-with-chanelle-blu-and-dani-sunii-2024-print-copy-colored" title="Xconfessions Calor with Chanelle Blu and Dani Sunii (2024) print copy colored">
     </a>

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -35,6 +34,48 @@
   </head>
 
   <body>
+    
+    <script type="text/javascript">
+  (function() {
+    // Config
+    const NSFW_STORAGE_KEY = 'shouldNsfwContentBeDisplayed'
+    const CLASS_NAME_NSFW_ALLOWED = 'nsfw-allowed'
+    const CLASS_NAME_NSFW_PROHIBITED = 'nsfw-prohibited'
+
+    function applyBodyClassName(isNsfwAllowed) {
+      console.log('applyBodyClassName', isNsfwAllowed)
+      if (isNsfwAllowed) {
+        document.body.classList.add(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.remove(CLASS_NAME_NSFW_PROHIBITED)
+      } else {
+        document.body.classList.remove(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.add(CLASS_NAME_NSFW_PROHIBITED)
+      }
+    }
+
+    function confirmNsfwContent() {
+      const result = confirm('Want to see NSFW content?')
+      sessionStorage.setItem(NSFW_STORAGE_KEY, result)
+      applyBodyClassName(result === true)
+    }
+    // Make it accessible by the trigger
+    window.confirmNsfwContent = confirmNsfwContent
+
+    function checkSessionStorage() {
+      const value = sessionStorage.getItem(NSFW_STORAGE_KEY)
+      if (value !== null) {
+        applyBodyClassName(value === 'true')
+      } else {
+        confirmNsfwContent()
+      }
+    }
+
+    // Initialize
+    checkSessionStorage()
+  })()
+</script>
+
+
     <header am-mainHeader am-mainCentered>
       <a am-logo href="/">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 32">
@@ -64,67 +105,67 @@
 
   <ul am-imageList="medium">
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2022/krowa-silacz-2022/">
       <img am-imageList-image src="/images-medium/2022/krowa siłacz (2022).gif" alt="krowa-silacz-2022" title="krowa siłacz (2022)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2022/lesna-sprawa-1/">
       <img am-imageList-image src="/images-medium/2022/leśna sprawa 1.gif" alt="lesna-sprawa-1" title="leśna sprawa 1">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2022/lesna-sprawa-2/">
       <img am-imageList-image src="/images-medium/2022/leśna sprawa 2.gif" alt="lesna-sprawa-2" title="leśna sprawa 2">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2022/penis-magiczny-1/">
       <img am-imageList-image src="/images-medium/2022/penis magiczny 1.gif" alt="penis-magiczny-1" title="penis magiczny 1">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2022/penis-magiczny-2/">
       <img am-imageList-image src="/images-medium/2022/penis magiczny 2.gif" alt="penis-magiczny-2" title="penis magiczny 2">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2022/portrait-of-natalia-jodelka-nude-2022/">
       <img am-imageList-image src="/images-medium/2022/portrait of Natalia jodełka nude (2022).gif" alt="portrait-of-natalia-jodelka-nude-2022" title="portrait of Natalia jodełka nude (2022)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2022/portrait-of-nonbinary-nude-dendrophile-2022/">
       <img am-imageList-image src="/images-medium/2022/portrait of nonbinary nude dendrophile (2022).gif" alt="portrait-of-nonbinary-nude-dendrophile-2022" title="portrait of nonbinary nude dendrophile (2022)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2022/portrait-of-nude-man-with-rat-after-lucian-freud-2022/">
       <img am-imageList-image src="/images-medium/2022/portrait of nude man with rat after lucian freud (2022).gif" alt="portrait-of-nude-man-with-rat-after-lucian-freud-2022" title="portrait of nude man with rat after lucian freud (2022)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2022/portrait-of-skrzyniarz-2022-poor-quality-photo/">
       <img am-imageList-image src="/images-medium/2022/portrait of skrzyniarz (2022) poor quality photo.gif" alt="portrait-of-skrzyniarz-2022-poor-quality-photo" title="portrait of skrzyniarz (2022) poor quality photo">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2022/selfportrait-schemat-w-objeciach-traumy-2-2022/">
       <img am-imageList-image src="/images-medium/2022/selfportrait - schemat w objeciach traumy 2 (2022).gif" alt="selfportrait-schemat-w-objeciach-traumy-2-2022" title="selfportrait - schemat w objeciach traumy 2 (2022)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2022/selfportrait-in-the-sun-2022/">
       <img am-imageList-image src="/images-medium/2022/selfportrait in the sun 2022.gif" alt="selfportrait-in-the-sun-2022" title="selfportrait in the sun 2022">
     </a>

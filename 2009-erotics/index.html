@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -35,6 +34,48 @@
   </head>
 
   <body>
+    
+    <script type="text/javascript">
+  (function() {
+    // Config
+    const NSFW_STORAGE_KEY = 'shouldNsfwContentBeDisplayed'
+    const CLASS_NAME_NSFW_ALLOWED = 'nsfw-allowed'
+    const CLASS_NAME_NSFW_PROHIBITED = 'nsfw-prohibited'
+
+    function applyBodyClassName(isNsfwAllowed) {
+      console.log('applyBodyClassName', isNsfwAllowed)
+      if (isNsfwAllowed) {
+        document.body.classList.add(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.remove(CLASS_NAME_NSFW_PROHIBITED)
+      } else {
+        document.body.classList.remove(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.add(CLASS_NAME_NSFW_PROHIBITED)
+      }
+    }
+
+    function confirmNsfwContent() {
+      const result = confirm('Want to see NSFW content?')
+      sessionStorage.setItem(NSFW_STORAGE_KEY, result)
+      applyBodyClassName(result === true)
+    }
+    // Make it accessible by the trigger
+    window.confirmNsfwContent = confirmNsfwContent
+
+    function checkSessionStorage() {
+      const value = sessionStorage.getItem(NSFW_STORAGE_KEY)
+      if (value !== null) {
+        applyBodyClassName(value === 'true')
+      } else {
+        confirmNsfwContent()
+      }
+    }
+
+    // Initialize
+    checkSessionStorage()
+  })()
+</script>
+
+
     <header am-mainHeader am-mainCentered>
       <a am-logo href="/">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 32">
@@ -64,133 +105,133 @@
 
   <ul am-imageList="medium">
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-i-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-I--2009-04.gif" alt="nude-erotic-i-2009-04" title="nude-erotic-I--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-ii-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-II--2009-04.gif" alt="nude-erotic-ii-2009-04" title="nude-erotic-II--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-iii-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-III--2009-04.gif" alt="nude-erotic-iii-2009-04" title="nude-erotic-III--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-iv-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-IV--2009-04.gif" alt="nude-erotic-iv-2009-04" title="nude-erotic-IV--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-ix-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-IX--2009-04.gif" alt="nude-erotic-ix-2009-04" title="nude-erotic-IX--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-v-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-V--2009-04.gif" alt="nude-erotic-v-2009-04" title="nude-erotic-V--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-vi-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-VI--2009-04.gif" alt="nude-erotic-vi-2009-04" title="nude-erotic-VI--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-vii-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-VII--2009-04.gif" alt="nude-erotic-vii-2009-04" title="nude-erotic-VII--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-viii-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-VIII--2009-04.gif" alt="nude-erotic-viii-2009-04" title="nude-erotic-VIII--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-x-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-X--2009-04.gif" alt="nude-erotic-x-2009-04" title="nude-erotic-X--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xi-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XI--2009-04.gif" alt="nude-erotic-xi-2009-04" title="nude-erotic-XI--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xii-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XII--2009-04.gif" alt="nude-erotic-xii-2009-04" title="nude-erotic-XII--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xiii-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XIII--2009-04.gif" alt="nude-erotic-xiii-2009-04" title="nude-erotic-XIII--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xiv-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XIV--2009-04.gif" alt="nude-erotic-xiv-2009-04" title="nude-erotic-XIV--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xix-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XIX--2009-04.gif" alt="nude-erotic-xix-2009-04" title="nude-erotic-XIX--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xv-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XV--2009-04.gif" alt="nude-erotic-xv-2009-04" title="nude-erotic-XV--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xvi-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XVI--2009-04.gif" alt="nude-erotic-xvi-2009-04" title="nude-erotic-XVI--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xvii-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XVII--2009-04.gif" alt="nude-erotic-xvii-2009-04" title="nude-erotic-XVII--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xviii-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XVIII--2009-04.gif" alt="nude-erotic-xviii-2009-04" title="nude-erotic-XVIII--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xx-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XX--2009-04.gif" alt="nude-erotic-xx-2009-04" title="nude-erotic-XX--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xxi-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XXI--2009-04.gif" alt="nude-erotic-xxi-2009-04" title="nude-erotic-XXI--2009-04">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="nsfw">
     <a am-imageList-link href="/2009-erotics/nude-erotic-xxii-2009-04/">
       <img am-imageList-image src="/images-medium/2009 erotics/nude-erotic-XXII--2009-04.gif" alt="nude-erotic-xxii-2009-04" title="nude-erotic-XXII--2009-04">
     </a>

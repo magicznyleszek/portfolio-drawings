@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -35,6 +34,48 @@
   </head>
 
   <body>
+    
+    <script type="text/javascript">
+  (function() {
+    // Config
+    const NSFW_STORAGE_KEY = 'shouldNsfwContentBeDisplayed'
+    const CLASS_NAME_NSFW_ALLOWED = 'nsfw-allowed'
+    const CLASS_NAME_NSFW_PROHIBITED = 'nsfw-prohibited'
+
+    function applyBodyClassName(isNsfwAllowed) {
+      console.log('applyBodyClassName', isNsfwAllowed)
+      if (isNsfwAllowed) {
+        document.body.classList.add(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.remove(CLASS_NAME_NSFW_PROHIBITED)
+      } else {
+        document.body.classList.remove(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.add(CLASS_NAME_NSFW_PROHIBITED)
+      }
+    }
+
+    function confirmNsfwContent() {
+      const result = confirm('Want to see NSFW content?')
+      sessionStorage.setItem(NSFW_STORAGE_KEY, result)
+      applyBodyClassName(result === true)
+    }
+    // Make it accessible by the trigger
+    window.confirmNsfwContent = confirmNsfwContent
+
+    function checkSessionStorage() {
+      const value = sessionStorage.getItem(NSFW_STORAGE_KEY)
+      if (value !== null) {
+        applyBodyClassName(value === 'true')
+      } else {
+        confirmNsfwContent()
+      }
+    }
+
+    // Initialize
+    checkSessionStorage()
+  })()
+</script>
+
+
     <header am-mainHeader am-mainCentered>
       <a am-logo href="/">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 32">
@@ -64,205 +105,205 @@
 
   <ul am-imageList="medium">
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-a-girl-860-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of a girl 860 (2010).gif" alt="portrait-of-a-girl-860-2010" title="portrait of a girl 860 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-alicja-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Alicja (2010).gif" alt="portrait-of-alicja-2010" title="portrait of Alicja (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-bartosz-2-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Bartosz 2 (2010).gif" alt="portrait-of-bartosz-2-2010" title="portrait of Bartosz 2 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-fika-2-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Fika 2 (2010).gif" alt="portrait-of-fika-2-2010" title="portrait of Fika 2 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-katarzyna-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Katarzyna (2010).gif" alt="portrait-of-katarzyna-2010" title="portrait of Katarzyna (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-kuba-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Kuba (2010).gif" alt="portrait-of-kuba-2010" title="portrait of Kuba (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-magda-r-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Magda R (2010).gif" alt="portrait-of-magda-r-2010" title="portrait of Magda R (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-marta-2-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Marta 2 (2010).gif" alt="portrait-of-marta-2-2010" title="portrait of Marta 2 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-marta-9-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Marta 9 (2010).gif" alt="portrait-of-marta-9-2010" title="portrait of Marta 9 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-marta-m-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Marta M (2010).gif" alt="portrait-of-marta-m-2010" title="portrait of Marta M (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-michal-bmw-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Michał BMW (2010).gif" alt="portrait-of-michal-bmw-2010" title="portrait of Michał BMW (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-my-first-tattoo-artist-gordon-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of my first tattoo artist Gordon (2010).gif" alt="portrait-of-my-first-tattoo-artist-gordon-2010" title="portrait of my first tattoo artist Gordon (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-noah-antwiler-002-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Noah Antwiler 002 (2010).gif" alt="portrait-of-noah-antwiler-002-2010" title="portrait of Noah Antwiler 002 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-noah-antwiler-647-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of noah antwiler 647 (2010).gif" alt="portrait-of-noah-antwiler-647-2010" title="portrait of noah antwiler 647 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-sg-meredith-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of SG Meredith (2010).gif" alt="portrait-of-sg-meredith-2010" title="portrait of SG Meredith (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-some-movie-dude-647-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of some movie dude 647 (2010).gif" alt="portrait-of-some-movie-dude-647-2010" title="portrait of some movie dude 647 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-sylwia-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Sylwia (2010).gif" alt="portrait-of-sylwia-2010" title="portrait of Sylwia (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-tpsikus-1-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of TPsikus 1 (2010).gif" alt="portrait-of-tpsikus-1-2010" title="portrait of TPsikus 1 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-of-yukari-oshima-as-yomi-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait of Yukari Oshima as Yomi (2010).gif" alt="portrait-of-yukari-oshima-as-yomi-2010" title="portrait of Yukari Oshima as Yomi (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-zmarszczki-1-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait zmarszczki 1 (2010).gif" alt="portrait-zmarszczki-1-2010" title="portrait zmarszczki 1 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-zmarszczki-2-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait zmarszczki 2 (2010).gif" alt="portrait-zmarszczki-2-2010" title="portrait zmarszczki 2 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-zmarszczki-3-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait zmarszczki 3 (2010).gif" alt="portrait-zmarszczki-3-2010" title="portrait zmarszczki 3 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-zmarszczki-4-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait zmarszczki 4 (2010).gif" alt="portrait-zmarszczki-4-2010" title="portrait zmarszczki 4 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-zmarszczki-5-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait zmarszczki 5 (2010).gif" alt="portrait-zmarszczki-5-2010" title="portrait zmarszczki 5 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-zmarszczki-6-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait zmarszczki 6 (2010).gif" alt="portrait-zmarszczki-6-2010" title="portrait zmarszczki 6 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-zmarszczki-7-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait zmarszczki 7 (2010).gif" alt="portrait-zmarszczki-7-2010" title="portrait zmarszczki 7 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/portrait-zmarszczki-8-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/portrait zmarszczki 8 (2010).gif" alt="portrait-zmarszczki-8-2010" title="portrait zmarszczki 8 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/selfportrait-045-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/selfportrait 045 (2010).gif" alt="selfportrait-045-2010" title="selfportrait 045 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/selfportrait-047-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/selfportrait 047 (2010).gif" alt="selfportrait-047-2010" title="selfportrait 047 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/selfportrait-734-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/selfportrait 734 (2010).gif" alt="selfportrait-734-2010" title="selfportrait 734 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/selfportrait-763-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/selfportrait 763 (2010).gif" alt="selfportrait-763-2010" title="selfportrait 763 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/selfportrait-902-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/selfportrait 902 (2010).gif" alt="selfportrait-902-2010" title="selfportrait 902 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/selfportrait-903-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/selfportrait 903 (2010).gif" alt="selfportrait-903-2010" title="selfportrait 903 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-portraits/selfportrait-911-2010/">
       <img am-imageList-image src="/images-medium/2010 portraits/selfportrait 911 (2010).gif" alt="selfportrait-911-2010" title="selfportrait 911 (2010)">
     </a>

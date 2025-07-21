@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -35,6 +34,48 @@
   </head>
 
   <body>
+    
+    <script type="text/javascript">
+  (function() {
+    // Config
+    const NSFW_STORAGE_KEY = 'shouldNsfwContentBeDisplayed'
+    const CLASS_NAME_NSFW_ALLOWED = 'nsfw-allowed'
+    const CLASS_NAME_NSFW_PROHIBITED = 'nsfw-prohibited'
+
+    function applyBodyClassName(isNsfwAllowed) {
+      console.log('applyBodyClassName', isNsfwAllowed)
+      if (isNsfwAllowed) {
+        document.body.classList.add(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.remove(CLASS_NAME_NSFW_PROHIBITED)
+      } else {
+        document.body.classList.remove(CLASS_NAME_NSFW_ALLOWED)
+        document.body.classList.add(CLASS_NAME_NSFW_PROHIBITED)
+      }
+    }
+
+    function confirmNsfwContent() {
+      const result = confirm('Want to see NSFW content?')
+      sessionStorage.setItem(NSFW_STORAGE_KEY, result)
+      applyBodyClassName(result === true)
+    }
+    // Make it accessible by the trigger
+    window.confirmNsfwContent = confirmNsfwContent
+
+    function checkSessionStorage() {
+      const value = sessionStorage.getItem(NSFW_STORAGE_KEY)
+      if (value !== null) {
+        applyBodyClassName(value === 'true')
+      } else {
+        confirmNsfwContent()
+      }
+    }
+
+    // Initialize
+    checkSessionStorage()
+  })()
+</script>
+
+
     <header am-mainHeader am-mainCentered>
       <a am-logo href="/">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 32">
@@ -64,145 +105,145 @@
 
   <ul am-imageList="medium">
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-34-2010-03/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 34 (2010 03).gif" alt="robot-34-2010-03" title="robot 34 (2010 03)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-505-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 505 (2010).gif" alt="robot-505-2010" title="robot 505 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-507-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 507 (2010).gif" alt="robot-507-2010" title="robot 507 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-613-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 613 (2010).gif" alt="robot-613-2010" title="robot 613 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-619-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 619 (2010).gif" alt="robot-619-2010" title="robot 619 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-620-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 620 (2010).gif" alt="robot-620-2010" title="robot 620 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-630-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 630 (2010).gif" alt="robot-630-2010" title="robot 630 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-632-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 632 (2010).gif" alt="robot-632-2010" title="robot 632 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-648-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 648 (2010).gif" alt="robot-648-2010" title="robot 648 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-653-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 653 (2010).gif" alt="robot-653-2010" title="robot 653 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-654-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 654 (2010).gif" alt="robot-654-2010" title="robot 654 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-765-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 765 (2010).gif" alt="robot-765-2010" title="robot 765 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-831-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 831 (2010).gif" alt="robot-831-2010" title="robot 831 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-861-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot 861 (2010).gif" alt="robot-861-2010" title="robot 861 (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-depression-2-2010-05/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot depression 2 (2010 05).gif" alt="robot-depression-2-2010-05" title="robot depression 2 (2010 05)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-depression-3-2010-05/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot depression 3 (2010 05).gif" alt="robot-depression-3-2010-05" title="robot depression 3 (2010 05)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-depression-4-2010-05/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot depression 4 (2010 05).gif" alt="robot-depression-4-2010-05" title="robot depression 4 (2010 05)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-kamulec-chmurka-scan927-2010-05/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot kamulec chmurka scan927 (2010 05).gif" alt="robot-kamulec-chmurka-scan927-2010-05" title="robot kamulec chmurka scan927 (2010 05)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-rambot-2010/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot Rambot (2010).gif" alt="robot-rambot-2010" title="robot Rambot (2010)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-scan907-2010-05/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot scan907 (2010 05).gif" alt="robot-scan907-2010-05" title="robot scan907 (2010 05)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-vhs-2010-02/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot VHS (2010 02).gif" alt="robot-vhs-2010-02" title="robot VHS (2010 02)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-war-at-nagasaki-2010-05/">
       <img am-imageList-image src="/images-medium/2010 roboty/Robot War at Nagasaki (2010 05).gif" alt="robot-war-at-nagasaki-2010-05" title="Robot War at Nagasaki (2010 05)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-z-recyklingu-2010-04/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot z recyklingu (2010 04).gif" alt="robot-z-recyklingu-2010-04" title="robot z recyklingu (2010 04)">
     </a>
   </li>
   
-  <li am-imageList-item>
+  <li am-imageList-item="">
     <a am-imageList-link href="/2010-roboty/robot-zautomatyzowany-przedstawiciel-burzuazji-2010-03/">
       <img am-imageList-image src="/images-medium/2010 roboty/robot zautomatyzowany przedstawiciel burżuazji (2010 03).gif" alt="robot-zautomatyzowany-przedstawiciel-burzuazji-2010-03" title="robot zautomatyzowany przedstawiciel burżuazji (2010 03)">
     </a>
