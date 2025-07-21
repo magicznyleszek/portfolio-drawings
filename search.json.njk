@@ -10,10 +10,12 @@
     {
       "url": "{{ image.url }}",
       "title": "{{ image.title }}",
+      "slug": "{{ image.slug }}",
       "description": "{{ image.description }}",
       "small": "{{ image.small }}",
       "medium": "{{ image.medium }}",
-      "large": "{{ image.large }}"
+      "large": "{{ image.large }}",
+      "isNsfw": {{ image.isNsfw }}
     }
     {% if not loop.last %},{% endif %}
     {%- endfor %}

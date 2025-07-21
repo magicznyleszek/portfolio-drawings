@@ -242,9 +242,14 @@ a[am-logo] svg {
   display: block;
 }
 
+[am-imageList-link],
+[am-imagelink] {
+  /* Needed for outline and for nsfw blur */
+  overflow: hidden;
+}
+
 [am-imageList-link]:hover {
   outline: 2px solid var(--theme-accent);
-  overflow: hidden;
 }
 
 /* category */
@@ -341,9 +346,44 @@ button[am-searchForm-button]:active {
   flex-direction: row;
   align-items: center;
   width: 100%;
-  gap: var(--size-sm);;
+  gap: var(--size-sm);
 }
 
 [am-searchResult]:not(:last-child) {
   margin-bottom: var(--size-md);
+}
+
+[am-searchResult-image] {
+  overflow: hidden;
+  display: block;
+}
+
+[am-searchResult-image] img {
+  display: block;
+}
+
+/* nsfw handling */
+
+[am-nsfw-confirm-trigger] {
+  cursor: pointer;
+}
+
+body.nsfw-prohibited [am-image~="nsfw"] img {
+  filter: blur(0.5rem);
+}
+
+body.nsfw-prohibited [am-searchResult~="nsfw"] img,
+body.nsfw-prohibited [am-imagelist~="small"] [am-imageList-item~="nsfw"] img {
+  filter: blur(0.125rem);
+}
+
+body.nsfw-prohibited [am-imagelist~="medium"] [am-imageList-item~="nsfw"] img {
+  filter: blur(0.25rem);
+}
+
+/* If NSFW is not shown, make the confirm trigger appear as clickable */
+body.nsfw-prohibited [am-nsfw-confirm-trigger] {
+  text-decoration-line: line-through;
+  text-decoration-style: solid;
+  color: var(--theme-accent);
 }

@@ -16,7 +16,7 @@
   image: image
 }) }}
 
-<article>
+<article am-image="{% if image.isNsfw%}nsfw{% endif %}">
   {% if image.description %}
   <p>{{ image.description | safe }}</p>
   {% endif %}

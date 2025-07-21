@@ -46,10 +46,11 @@
     let compiledString = ''
     for (let i = 0; i < filtered.length; i++) {
       const image = filtered[i]
-      // const resultItem = `<div><a href="${image.url}">${image.title}</a></div>`
       const resultItem = `
-        <a am-searchResult href="${ image.url }">
-          <img src="/${ image.small }" alt="${ image.slug }" title="${ image.title }" />
+        <a am-searchResult="${ image.isNsfw ? 'nsfw': ''}" href="${ image.url }">
+          <span am-searchResult-image>
+            <img src="/${ image.small }" alt="${ image.slug }" title="${ image.title }" />
+          </span>
           <span>${ image.title }</span>
         </a>
       `

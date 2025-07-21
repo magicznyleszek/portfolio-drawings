@@ -18,6 +18,7 @@ export interface ScannedImage {
   url: string
   title: string
   description?: string
+  isNsfw: boolean
   category: ScannedImageCategory
 }
 
@@ -81,12 +82,17 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
     const imageSlug = slugify(imageFilename)
     const imageUrl = `/${categorySlug}/${imageSlug}/`
 
+    // All NSFW images should have "nsfw" in the name, the rest of the keywords is here just for safety.
+    const nsfwKeywords = ['nsfw', 'nude', 'porn', 'xconfessions', 'cheex', 'fourchambers']
+    const isNsfw = nsfwKeywords.some((keyword) => imageFilename.toLocaleLowerCase().includes(keyword))
+
     return {
       file,
       slug: imageSlug,
       url: imageUrl,
       title: imageTitle,
       description: imageDescription,
+      isNsfw: isNsfw,
       category: {
         name: categoryDir,
         slug: categorySlug,

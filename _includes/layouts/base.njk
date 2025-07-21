@@ -5,6 +5,7 @@
   "ogimage": "/zefirefemera-logo-color.png"
 }
 ---
+{%- from "system/component.njk" import component -%}
 
 <!doctype html>
 <html lang="en">
@@ -42,6 +43,9 @@
   </head>
 
   <body>
+    {# Put in here, because we need for body to exist when the nsfw script runs #}
+    {{ component('nsfw') }}
+
     <header am-mainHeader am-mainCentered>
       <a am-logo href="/">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 32">

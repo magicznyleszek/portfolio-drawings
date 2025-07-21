@@ -1,6 +1,6 @@
 <ul am-imageList="{{params.size}}">
   {% for image in params.images %}
-  <li am-imageList-item>
+  <li am-imageList-item="{% if image.isNsfw%}nsfw{% endif %}">
     <a am-imageList-link href="{{ image.url }}">
       <img am-imageList-image src="/{{ image[params.size] }}" alt="{{ image.slug }}" title="{{ image.title }}">
     </a>
