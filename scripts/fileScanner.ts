@@ -3,6 +3,8 @@ import fg from 'fast-glob'
 import fs from 'fs-extra'
 
 const IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif']
+// All NSFW images should have "nsfw" in the name, the rest of the keywords is here just for safety.
+const NSFW_KEYWORDS = ['nsfw', 'nude', 'porn', 'xconfessions', 'cheex', 'fourchambers']
 
 export interface ScannedImageCategory {
   name: string
@@ -82,9 +84,7 @@ export async function scanImages(directory: string): Promise<ScannedImage[]> {
     const imageSlug = slugify(imageFilename)
     const imageUrl = `/${categorySlug}/${imageSlug}/`
 
-    // All NSFW images should have "nsfw" in the name, the rest of the keywords is here just for safety.
-    const nsfwKeywords = ['nsfw', 'nude', 'porn', 'xconfessions', 'cheex', 'fourchambers']
-    const isNsfw = nsfwKeywords.some((keyword) => imageFilename.toLocaleLowerCase().includes(keyword))
+    const isNsfw = NSFW_KEYWORDS.some((keyword) => imageFilename.toLocaleLowerCase().includes(keyword))
 
     return {
       file,

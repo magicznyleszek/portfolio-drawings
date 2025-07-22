@@ -129,7 +129,6 @@ img {
   max-width: 100%;
   height: auto;
   border-radius: var(--border-radius);
-  box-shadow: 1px 1px 1px var(--theme-shadow);
 }
 
 p:not(:last-child) {
@@ -209,6 +208,14 @@ a[am-logo] svg {
 
 /* imageLink */
 
+[am-imageList-link],
+[am-imageLink],
+[am-searchResult-image] {
+  /* Needed for nsfw blur */
+  overflow: hidden;
+  box-shadow: 1px 1px 1px var(--theme-shadow);
+}
+
 [am-imageLink] {
   display: inline-block;
   vertical-align: top;
@@ -240,12 +247,6 @@ a[am-logo] svg {
 [am-imageList-link],
 [am-imageList-image] {
   display: block;
-}
-
-[am-imageList-link],
-[am-imagelink] {
-  /* Needed for outline and for nsfw blur */
-  overflow: hidden;
 }
 
 [am-imageList-link]:hover {
@@ -354,7 +355,6 @@ button[am-searchForm-button]:active {
 }
 
 [am-searchResult-image] {
-  overflow: hidden;
   display: block;
 }
 
@@ -363,10 +363,6 @@ button[am-searchForm-button]:active {
 }
 
 /* nsfw handling */
-
-[am-nsfw-confirm-trigger] {
-  cursor: pointer;
-}
 
 body.nsfw-prohibited [am-image~="nsfw"] img {
   filter: blur(0.5rem);
@@ -381,7 +377,11 @@ body.nsfw-prohibited [am-imagelist~="medium"] [am-imageList-item~="nsfw"] img {
   filter: blur(0.25rem);
 }
 
-/* If NSFW is not shown, make the confirm trigger appear as clickable */
+[am-nsfw-confirm-trigger] {
+  cursor: pointer;
+}
+
+/* If NSFW is not shown, make the confirm trigger more prominent */
 body.nsfw-prohibited [am-nsfw-confirm-trigger] {
   text-decoration-line: line-through;
   text-decoration-style: solid;
