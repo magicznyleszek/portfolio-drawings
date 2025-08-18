@@ -36,7 +36,7 @@
   <body>
     
     <script type="text/javascript">
-  (function() {
+  (function () {
     // Config
     // ============================
 
@@ -60,12 +60,12 @@
 
     function confirmNsfwContent() {
       const result = confirm(CONFIRM_MESSAGE)
-      sessionStorage.setItem(NSFW_STORAGE_KEY, result)
+      localStorage.setItem(NSFW_STORAGE_KEY, result)
       applyBodyClassName(result === true)
     }
 
-    function checkSessionStorage() {
-      const value = sessionStorage.getItem(NSFW_STORAGE_KEY)
+    function checkStorage() {
+      const value = localStorage.getItem(NSFW_STORAGE_KEY)
       if (value !== null) {
         applyBodyClassName(value === 'true')
       } else {
@@ -78,7 +78,7 @@
 
     // Make it accessible outside IFEE
     window.confirmNsfwContent = confirmNsfwContent
-    checkSessionStorage()
+    checkStorage()
   })()
 </script>
 
