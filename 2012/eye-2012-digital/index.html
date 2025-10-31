@@ -141,12 +141,27 @@
       await navigator.share(shareData);
     }
   };
+
+  // Attach click handlers to any buttons with the am-shareButton attribute.
+  // This reads values from data-* attributes, avoiding inline quoting issues.
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[am-shareButton]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const imageUrl = btn.dataset.imageUrl;
+        const pageUrl = btn.dataset.pageUrl;
+        const title = btn.dataset.title; // apostrophes come through correctly when using HTML entity escaping
+        shareImageAsset(imageUrl, pageUrl, title);
+      });
+    });
+  });
 </script>
 
 <button
   title="Share"
   am-shareButton
-  onclick="shareImageAsset('/images-large/2012/Eye (2012) digital.jpeg', 'https://drawings.zefirefemera.xyz/2012/eye-2012-digital/', 'Eye (2012) digital')"
+  data-image-url="/images-large/2012/Eye (2012) digital.jpeg"
+  data-page-url="https://drawings.zefirefemera.xyz/2012/eye-2012-digital/"
+  data-title="Eye (2012) digital"
 >&heartsuit;</button>
 
 </article>

@@ -141,12 +141,27 @@
       await navigator.share(shareData);
     }
   };
+
+  // Attach click handlers to any buttons with the am-shareButton attribute.
+  // This reads values from data-* attributes, avoiding inline quoting issues.
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[am-shareButton]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const imageUrl = btn.dataset.imageUrl;
+        const pageUrl = btn.dataset.pageUrl;
+        const title = btn.dataset.title; // apostrophes come through correctly when using HTML entity escaping
+        shareImageAsset(imageUrl, pageUrl, title);
+      });
+    });
+  });
 </script>
 
 <button
   title="Share"
   am-shareButton
-  onclick="shareImageAsset('/images-large/2025 portraits/portrait of Vex Ashley with Pokéballs (2025) after photo by sorryjonnydied.jpeg', 'https://drawings.zefirefemera.xyz/2025-portraits/portrait-of-vex-ashley-with-pokeballs-2025-after-photo-by-sorryjonnydied/', 'portrait of Vex Ashley with Pokéballs (2025) after photo by sorryjonnydied')"
+  data-image-url="/images-large/2025 portraits/portrait of Vex Ashley with Pokéballs (2025) after photo by sorryjonnydied.jpeg"
+  data-page-url="https://drawings.zefirefemera.xyz/2025-portraits/portrait-of-vex-ashley-with-pokeballs-2025-after-photo-by-sorryjonnydied/"
+  data-title="portrait of Vex Ashley with Pokéballs (2025) after photo by sorryjonnydied"
 >&heartsuit;</button>
 
 </article>

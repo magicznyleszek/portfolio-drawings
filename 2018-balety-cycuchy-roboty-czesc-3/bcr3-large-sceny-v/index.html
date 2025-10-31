@@ -141,12 +141,27 @@
       await navigator.share(shareData);
     }
   };
+
+  // Attach click handlers to any buttons with the am-shareButton attribute.
+  // This reads values from data-* attributes, avoiding inline quoting issues.
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[am-shareButton]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const imageUrl = btn.dataset.imageUrl;
+        const pageUrl = btn.dataset.pageUrl;
+        const title = btn.dataset.title; // apostrophes come through correctly when using HTML entity escaping
+        shareImageAsset(imageUrl, pageUrl, title);
+      });
+    });
+  });
 </script>
 
 <button
   title="Share"
   am-shareButton
-  onclick="shareImageAsset('/images-large/2018 Balety, Cycuchy, Roboty - częśc 3/bcr3 (large) sceny V+.jpeg', 'https://drawings.zefirefemera.xyz/2018-balety-cycuchy-roboty-czesc-3/bcr3-large-sceny-v/', 'bcr3 (large) sceny V+')"
+  data-image-url="/images-large/2018 Balety, Cycuchy, Roboty - częśc 3/bcr3 (large) sceny V+.jpeg"
+  data-page-url="https://drawings.zefirefemera.xyz/2018-balety-cycuchy-roboty-czesc-3/bcr3-large-sceny-v/"
+  data-title="bcr3 (large) sceny V+"
 >&heartsuit;</button>
 
 </article>

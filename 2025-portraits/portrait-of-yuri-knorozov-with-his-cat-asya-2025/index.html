@@ -141,12 +141,27 @@
       await navigator.share(shareData);
     }
   };
+
+  // Attach click handlers to any buttons with the am-shareButton attribute.
+  // This reads values from data-* attributes, avoiding inline quoting issues.
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[am-shareButton]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const imageUrl = btn.dataset.imageUrl;
+        const pageUrl = btn.dataset.pageUrl;
+        const title = btn.dataset.title; // apostrophes come through correctly when using HTML entity escaping
+        shareImageAsset(imageUrl, pageUrl, title);
+      });
+    });
+  });
 </script>
 
 <button
   title="Share"
   am-shareButton
-  onclick="shareImageAsset('/images-large/2025 portraits/portrait of Yuri Knorozov with his cat Asya (2025).jpeg', 'https://drawings.zefirefemera.xyz/2025-portraits/portrait-of-yuri-knorozov-with-his-cat-asya-2025/', 'portrait of Yuri Knorozov with his cat Asya (2025)')"
+  data-image-url="/images-large/2025 portraits/portrait of Yuri Knorozov with his cat Asya (2025).jpeg"
+  data-page-url="https://drawings.zefirefemera.xyz/2025-portraits/portrait-of-yuri-knorozov-with-his-cat-asya-2025/"
+  data-title="portrait of Yuri Knorozov with his cat Asya (2025)"
 >&heartsuit;</button>
 
 </article>

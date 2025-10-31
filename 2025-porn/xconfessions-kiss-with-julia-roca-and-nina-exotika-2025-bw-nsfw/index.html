@@ -141,12 +141,27 @@
       await navigator.share(shareData);
     }
   };
+
+  // Attach click handlers to any buttons with the am-shareButton attribute.
+  // This reads values from data-* attributes, avoiding inline quoting issues.
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('[am-shareButton]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const imageUrl = btn.dataset.imageUrl;
+        const pageUrl = btn.dataset.pageUrl;
+        const title = btn.dataset.title; // apostrophes come through correctly when using HTML entity escaping
+        shareImageAsset(imageUrl, pageUrl, title);
+      });
+    });
+  });
 </script>
 
 <button
   title="Share"
   am-shareButton
-  onclick="shareImageAsset('/images-large/2025 porn/Xconfessions Kiss with Julia Roca and Nina Exotika (2025) BW nsfw.jpeg', 'https://drawings.zefirefemera.xyz/2025-porn/xconfessions-kiss-with-julia-roca-and-nina-exotika-2025-bw-nsfw/', 'Xconfessions Kiss with Julia Roca and Nina Exotika (2025) BW nsfw')"
+  data-image-url="/images-large/2025 porn/Xconfessions Kiss with Julia Roca and Nina Exotika (2025) BW nsfw.jpeg"
+  data-page-url="https://drawings.zefirefemera.xyz/2025-porn/xconfessions-kiss-with-julia-roca-and-nina-exotika-2025-bw-nsfw/"
+  data-title="Xconfessions Kiss with Julia Roca and Nina Exotika (2025) BW nsfw"
 >&heartsuit;</button>
 
 </article>
